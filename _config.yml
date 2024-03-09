@@ -1,4 +1,8 @@
 theme: jekyll-theme-cayman
 title: Axion Astrophysical Fluxes
 description: A repository with data, fits and codes for axion astrophysical fluxes.
-website: https://ggrillidc.github.io/AxionAstrophysicalFluxes/
+url: "https://ggrillidc.github.io/AxionAstrophysicalFluxes"
+
+
+# Set this to true to get LaTeX math equation support
+use_math: true
