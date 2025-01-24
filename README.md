@@ -8,9 +8,10 @@ Please, email me [ggrillidc@gmail.com] for questions, comments or complaints.
 
 **Primakoff**
 
-Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/master/plots/Primakoff_axion_flux_plot.pdf), [png](https://github.com/ggrillidc/AxionAstrophysicalFluxes/blob/main/plots/plots_png/Primakoff_axion_flux_plot.png))
+Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Primakoff_axion_flux_plot.pdf), [png](https://github.com/ggrillidc/AxionAstrophysicalFluxes/blob/main/plots/plots_png/Primakoff_axion_flux_plot.png))
 
 
+### &nbsp;
 ### &nbsp;
 
 
@@ -26,6 +27,7 @@ Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/master/plo
 
 
 ### &nbsp;
+### &nbsp;
 
 
 
@@ -39,6 +41,7 @@ Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/master/plo
 
 
 
+### &nbsp;
 ### &nbsp;
 
 
