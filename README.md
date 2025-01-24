@@ -13,6 +13,7 @@ Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots
 
 ### &nbsp;
 ### &nbsp;
+### &nbsp;
 
 
 
@@ -28,6 +29,7 @@ Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots
 
 ### &nbsp;
 ### &nbsp;
+### &nbsp;
 
 
 
@@ -41,6 +43,7 @@ Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots
 
 
 
+### &nbsp;
 ### &nbsp;
 ### &nbsp;
 
