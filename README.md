@@ -58,4 +58,50 @@ Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots
 
 ---
 
-### ALP source spectrum from Betelgeuse
+# Main Sequence stars axions
+
+
+
+---
+
+# Red Giants axions
+
+
+---
+
+# Horizontal Branch stars axions
+
+
+
+---
+
+# Asymptotic Red Giants axions
+
+
+
+---
+
+# White Dwarfs axions
+
+
+
+
+---
+
+# Red Supergiants axions
+
+---
+
+# Core-collapse Supernovae axions
+
+
+
+---
+
+# Neutron stars axions
+
+
+
+---
+
+# Binary neutron star mergers axions
