@@ -53,7 +53,7 @@ def plot_axion_flux(proc: str, Eamin: float, Eamax: float):
     flux1 = axion_flux(E_values, 1e-12, proc)*1.e-6
     # Customize the range of the plot
     plt.xlim(Eamin, Eamax)  # Custom x-axis limits
-    plt.ylim(0, np.max(flux1)*1.2)  # Custom y-axis limits   
+    plt.ylim(0, np.max(flux1)*1.1)  # Custom y-axis limits   
     # Plot the axion flux
     plt.plot(E_values, flux1, color='black')
     # Add labels and legend
