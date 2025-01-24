@@ -2,7 +2,9 @@ This webpage hosts data files and python notebooks for axion astrophysical fluxe
 
 Please, email me [ggrillidc@gmail.com] for questions, comments or complaints.
 
-### Solar Axions
+## Solar Axions
+
+### [View Notebok (.ipynb)](https://github.com/ggrillidc/AxionAstrophysicalFluxes/blob/main/notebooks/SolarAxions.ipynb)
 
 <img align="right" width="500" src="plots/plots_png/Primakoff_axion_flux_plot.png">
 
