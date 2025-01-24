@@ -14,7 +14,7 @@ Please, email me [ggrillidc@gmail.com] for questions, comments or complaints.
 
 Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Primakoff_axion_flux_plot.pdf), [png](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Primakoff_axion_flux_plot.png))
 
-$`g_{a\gamma} = 10^{-12}\,\text{GeV}^{-1}`$
+![Equation](https://latex.codecogs.com/png.latex?g_{a\gamma}%20=%2010^{-12}\,\text{GeV}^{-1})
 ### &nbsp;
 ### &nbsp;
 ### &nbsp;
