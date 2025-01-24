@@ -54,8 +54,8 @@ def plot_axion_flux(proc: str, Eamin: float, Eamax: float):
     # Plot the axion flux
     plt.plot(E_values, flux1, color='black')
     # Add labels and legend
-    plt.xlabel(r'$\omega({\rm keV})$', fontsize=30)
-    plt.ylabel(r'$\frac{d\Phi_{a}}{d\omega}(\times10^{6}\,{\rm keV}^{-1}{\rm s}^{-1}{\rm cm}^{-2})$', fontsize=30)
+    plt.xlabel(r'$E_a ({\rm keV})$', fontsize=30)
+    plt.ylabel(r'$\frac{d\Phi_{a}}{d E_a}(\times10^{6}\,{\rm keV}^{-1}{\rm s}^{-1}{\rm cm}^{-2})$', fontsize=30)
     plt.grid(True) 
     # Save the plot as PDF
     plt.savefig(plotfolder + proc + '_axion_flux_plot.pdf', bbox_inches='tight')
