@@ -12,9 +12,10 @@ Please, email me [ggrillidc@gmail.com] for questions, comments or complaints.
 
 **Primakoff**
 
-Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Primakoff_axion_flux_plot.pdf), [png](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Primakoff_axion_flux_plot.png))
 
 ![Equation](https://latex.codecogs.com/png.latex?g_{a\gamma}%20=%2010^{-12}\,\text{GeV}^{-1})
+
+Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Primakoff_axion_flux_plot.pdf), [png](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Primakoff_axion_flux_plot.png))
 ### &nbsp;
 ### &nbsp;
 ### &nbsp;
@@ -27,6 +28,8 @@ Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots
 <img align="right" width="500" src="plots/plots_png/Bremsstrahlung_axion_flux_plot.png">
 
 **Bremsstrahlung**
+
+![Equation](https://latex.codecogs.com/png.latex?g_{ae}%20=%2010^{-12}\,\text{GeV}^{-1})
 
 Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Bremsstrahlung_axion_flux_plot.pdf), [png](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Bremsstrahlung_axion_flux_plot.png))
 
@@ -44,6 +47,8 @@ Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots
 <img align="right" width="500" src="plots/plots_png/Compton_axion_flux_plot.png">
 
 **Compton**
+
+![Equation](https://latex.codecogs.com/png.latex?g_{ae}%20=%2010^{-12}\,\text{GeV}^{-1})
 
 Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Compton_axion_flux_plot.pdf), [png](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Compton_axion_flux_plot.png))
 
