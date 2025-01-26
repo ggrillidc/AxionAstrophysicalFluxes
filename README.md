@@ -4,7 +4,7 @@ Please, email me [ggrillidc@gmail.com] for questions, comments or complaints.
 
 # Solar Axions
 
-Solar model AGSS09 ([Serenelli et al. 2009],(https://iopscience.iop.org/article/10.1088/0004-637X/705/2/L123), [Serenelli 2010](https://link.springer.com/article/10.1007/s10509-009-0174-8))
+Solar model AGSS09 ([Serenelli et al. 2009](https://iopscience.iop.org/article/10.1088/0004-637X/705/2/L123), [Serenelli 2010](https://link.springer.com/article/10.1007/s10509-009-0174-8))
 
 ### [View Notebok (.ipynb)](https://github.com/ggrillidc/AxionAstrophysicalFluxes/blob/main/notebooks/SolarAxions.ipynb)
 
