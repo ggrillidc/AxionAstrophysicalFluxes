@@ -6,7 +6,7 @@ Please, email me [giovanni.grilli@lngs.infn.it] for questions, comments or compl
 
 Solar model: AGSS09 [[Serenelli et al. 2009](https://iopscience.iop.org/article/10.1088/0004-637X/705/2/L123), [Serenelli 2010](https://link.springer.com/article/10.1007/s10509-009-0174-8)]
 
-### [View Notebok (.ipynb)](https://github.com/ggrillidc/AxionAstrophysicalFluxes/blob/main/notebooks/SolarAxions.ipynb)
+### [View Notebook (.ipynb)](https://github.com/ggrillidc/AxionAstrophysicalFluxes/blob/main/notebooks/SolarAxions.ipynb)
 
 ---
 
@@ -67,7 +67,7 @@ Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots
 
 # Main Sequence stars axions
 
-### [View Notebok (.ipynb)](https://github.com/ggrillidc/AxionAstrophysicalFluxes/blob/main/notebooks/MainSequenceAxions.ipynb)
+### [View Notebook (.ipynb)](https://github.com/ggrillidc/AxionAstrophysicalFluxes/blob/main/notebooks/MainSequenceAxions.ipynb)
 
 ---
 
