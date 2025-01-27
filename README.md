@@ -92,7 +92,7 @@ Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots
 
 **Bremsstrahlung**
 
-![Equation](https://latex.codecogs.com/png.latex?g_{ae}%20=%2010^{-12}\,\text{GeV}^{-1})
+![Equation](https://latex.codecogs.com/png.latex?g_{ae}%20=%2010^{-12})
 
 Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Bremsstrahlung_MSAxion_flux_plot.pdf), [png](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Bremsstrahlung_MSAxion_flux_plot.png))
 
@@ -111,7 +111,7 @@ Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots
 
 **Compton**
 
-![Equation](https://latex.codecogs.com/png.latex?g_{ae}%20=%2010^{-12}\,\text{GeV}^{-1})
+![Equation](https://latex.codecogs.com/png.latex?g_{ae}%20=%2010^{-12})
 
 Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Compton_MSAxion_flux_plot.pdf), [png](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Compton_MSAxion_flux_plot.png))
 
