@@ -4,8 +4,8 @@ description: A repository with data, fits and codes for axion astrophysical flux
 url: "https://ggrillidc.github.io/AxionAstrophysicalFluxes"
 
 # Set this to true to get LaTeX math equation support
-# use_math: true
-mathjax: true
+use_math: true
+
 
 # Set this to true to display the summary of your blog post under your title on the Home page.
 show_description: true
