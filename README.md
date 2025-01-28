@@ -16,7 +16,7 @@ $$ -->
 ![Equation](https://latex.codecogs.com/png.latex?\frac{d\Phi_a}{dE_a}= C_0 \left(\frac{g_{ax}}{g_{\mathrm{ref}}}\right)^2 \left(\frac{E}{E_0}\right)^\beta e^{-(1+\beta)\frac{E}{E_0}})
 
 ```math
-\frac{d\Phi_a}{dE_a}= C_0 \left(\frac{g_{ax}}{g_{\mathrm{ref}}}\right)^2 \left(\frac{E}{E_0}\right)^\beta e^{-(1+\beta)\frac{E}{E_0}}
+$$\frac{d\Phi_a}{dE_a}= C_0 \left(\frac{g_{ax}}{g_{\mathrm{ref}}}\right)^2 \left(\frac{E}{E_0}\right)^\beta e^{-(1+\beta)\frac{E}{E_0}}$$
 ```
 
 $$
@@ -24,6 +24,7 @@ $$
 $$
 
 $`g_{\text{ref}}`$
+
 $g_{\text{ref}}$
 
 where the axion parameters are shown in the following Table.
