@@ -5,8 +5,6 @@ url: "https://ggrillidc.github.io/AxionAstrophysicalFluxes"
 
 # Set this to true to get LaTeX math equation support
 use_math: true
-include:
- - head.html
 
 
 # MathJax support
