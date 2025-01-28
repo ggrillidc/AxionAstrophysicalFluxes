@@ -30,7 +30,7 @@ $$
 $$ g_{\text{ref}} $$
 
 
-where the axion parameters are shown in the following Table.
+where the axion parameters are shown in the following Table:
 
 <!--
 |                              | $`g_{\text{ref}}`$              | $$ C_0  (\text{keV}^{-1}~\text{s}^{-1}~\text{cm}^{-2})$$    | $$ E_0 (\text{keV})$$    | $$ \beta $$             |
