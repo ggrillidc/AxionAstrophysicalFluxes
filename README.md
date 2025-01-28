@@ -1,3 +1,8 @@
+---
+layout: default
+use_math: true
+---
+
 This webpage hosts data files and python notebooks for axion astrophysical fluxes. 
 
 Please, email me [giovanni.grilli@lngs.infn.it] for questions, comments or complaints.
