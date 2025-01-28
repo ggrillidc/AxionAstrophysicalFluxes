@@ -1,3 +1,7 @@
+---
+use_math: true
+---
+
 This webpage hosts data files and python notebooks for axion astrophysical fluxes. 
 
 Please, email me [giovanni.grilli@lngs.infn.it] for questions, comments or complaints.
@@ -15,9 +19,11 @@ $$ -->
 
 ![Equation](https://latex.codecogs.com/png.latex?\frac{d\Phi_a}{dE_a}= C_0 \left(\frac{g_{ax}}{g_{\mathrm{ref}}}\right)^2 \left(\frac{E}{E_0}\right)^\beta e^{-(1+\beta)\frac{E}{E_0}})
 
-$$\
+$$
 \frac{d\Phi_a}{dE_a}= C_0 \left(\frac{g_{ax}}{g_{\mathrm{ref}}}\right)^2 \left(\frac{E}{E_0}\right)^\beta e^{-(1+\beta)\frac{E}{E_0}}
-$$\
+$$
+
+
 
 
 $$ g_{\text{ref}} $$
