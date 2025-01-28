@@ -13,8 +13,8 @@ use_math: true
 #  math_engine: mathjax
 
 # Add MathJax to the head of every page
-#include:
-#  - head.html
+include:
+ - head.html
 
 # Set this to true to display the summary of your blog post under your title on the Home page.
 show_description: true
