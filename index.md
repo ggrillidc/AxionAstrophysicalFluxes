@@ -95,6 +95,24 @@ Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots
 
 # Main Sequence stars axions
 
+The quasi-thermal Main Sequence stars axion spectrum at the source can be parametrized by 
+
+$$
+\frac{d\Phi_a}{dE_a}= C_0 \left(\frac{g_{ax}}{g_{\mathrm{ref}}}\right)^2 \left(\frac{E}{E_0}\right)^\beta e^{-(1+\beta)\frac{E}{E_0}}
+$$
+
+where the axion parameters are now a function of the stellar mass and are given in the following Table:
+
+|  | $$g_{a x}$$ | $$C_{0} (10^{40}\,\text{keV}^{-1}\,\text{s}^{-1}\,\text{cm}^{-2})$$ | $$E_{0} (\text{keV})$$ | $$\beta$$ |
+|---|---|---|---|---|
+| Primakoff $$x=\gamma$$ | $$10^{-12}\,\text{GeV}^{-1}$$ | $$\begin{cases} -0.140+0.053\,M^{-0.347}e^{M^{0.379}} & \text{for } M<10\,M_{\odot} \\ -0.014+0.011\,M^{1.081} & \text{for } M\geq 10 \, M_{\odot} \end{cases}$$ | $$3.70+1.13\,M^{0.355}$$ | $$1.23+3.63\,e^{-M^{0.29}}$$ |
+| Bremsstrahlung $$x=e$$ | $$10^{-12}$$ | $$55.21+1.62\times10^{4}M^{-0.65}$$ | $$0.06+1.80\,M^{0.23}$$ | $$\begin{cases} 0.57 + 0.18 e^{-M^{1.09}} & \text{for } M\le 10 \, M_{\odot} \\ 0.48+0.05 \,M^{0.19} & \text{for } M\geq 10 \, M_{\odot} \end{cases}$$ |
+| Compton $$x=e$$ | $$10^{-12}$$ | $$0.14+1.01\,M^{1.49}$$ | $$0.025+6.014\,M^{0.225}$$ | $$2.99-0.56\,e^{-M^{0.09}}$$ |
+
+
+**Table:** Fitting parameters for Eq.~\eqref{eq:fitprim}, where $M$ is in units of solar masses ${\rm M}_{\odot}$ and these fits are valid in the range $1-100~{\rm M}_{\odot}$.
+
+
 ### [View Notebook (.ipynb)](https://github.com/ggrillidc/AxionAstrophysicalFluxes/blob/main/notebooks/MainSequenceAxions.ipynb)
 
 ---
@@ -178,6 +196,11 @@ Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots
 ---
 
 # Red Supergiants axions
+
+
+
+
+
 
 ---
 
