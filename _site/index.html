@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Axion Astrophysical Fluxes | A repository with data, fits and codes for axion astrophysical fluxes.</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Axion Astrophysical Fluxes" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A repository with data, fits and codes for axion astrophysical fluxes." />
+<meta property="og:description" content="A repository with data, fits and codes for axion astrophysical fluxes." />
+<link rel="canonical" href="http://localhost:4000/" />
+<meta property="og:url" content="http://localhost:4000/" />
+<meta property="og:site_name" content="Axion Astrophysical Fluxes" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Axion Astrophysical Fluxes" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","description":"A repository with data, fits and codes for axion astrophysical fluxes.","headline":"Axion Astrophysical Fluxes","name":"Axion Astrophysical Fluxes","url":"http://localhost:4000/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+</head>
+
+<body>
+    <a id="skip-to-content" href="#content">Skip to the content.</a>
+
+    <header class="page-header" role="banner">
+        <h1 class="project-name">Axion Astrophysical Fluxes</h1>
+        <h2 class="project-tagline">A repository with data, fits and codes for axion astrophysical fluxes.</h2>
+        
+        
+    </header>
+
+    <main id="content" class="main-content" role="main">
+        <p>This webpage hosts data files and python notebooks for axion astrophysical fluxes.</p>
+
+<p>Please, email me [giovanni.grilli@lngs.infn.it] for questions, comments or complaints.</p>
+
+<h1 id="solar-axions">Solar Axions</h1>
+
+<!-- Solar model: AGSS09 [[Serenelli et al. 2009](https://iopscience.iop.org/article/10.1088/0004-637X/705/2/L123), [Serenelli 2010](https://link.springer.com/article/10.1007/s10509-009-0174-8)]-->
+
+<p>An accurate fit of solar axion fluxes at Earth obtained after integrating over the AGSS09 solar model [<a href="https://iopscience.iop.org/article/10.1088/0004-637X/705/2/L123">Serenelli et al. 2009</a>, <a href="https://link.springer.com/article/10.1007/s10509-009-0174-8">Serenelli 2010</a>] is given by:</p>
+
+\[\frac{d\Phi_a}{dE_a}= C_0 \left(\frac{g_{ax}}{g_{\mathrm{ref}}}\right)^2 \left(\frac{E}{E_0}\right)^\beta e^{-(1+\beta)\frac{E}{E_0}},\]
+
+<p>where the axion parameters are shown in the following Table:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>\(g_{\text{ref}}\)</th>
+      <th>\(C_0  (\text{keV}^{-1}~\text{s}^{-1}~\text{cm}^{-2})\)</th>
+      <th>\(E_0 (\text{keV})\)</th>
+      <th>\(\beta\)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Primakoff, \(x = \gamma\)</td>
+      <td>\(10^{-12}~\text{GeV}^{-1}\)</td>
+      <td>\((2.19 \pm 0.08)\,10^8\)</td>
+      <td>\(4.17 \pm 0.02\)</td>
+      <td>\(2.531 \pm 0.008\)</td>
+    </tr>
+    <tr>
+      <td>Bremsstrahlung, \(x = e\)</td>
+      <td>\(10^{-12}\)</td>
+      <td>\((3.847 \pm 0.007)\,10^{11}\)</td>
+      <td>\(1.63 \pm 0.01\)</td>
+      <td>\(0.8063 \pm 0.0003\)</td>
+    </tr>
+    <tr>
+      <td>Compton, \(x = e\)</td>
+      <td>\(10^{-12}\)</td>
+      <td>\((8.8 \pm 0.1) \, 10^{11}\)</td>
+      <td>\(5.10 \pm 0.03\)</td>
+      <td>\(2.979 \pm 0.001\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Table:</strong> Summary of the fitting parameters to be used in the equation above to reproduce the axion emission from the Sun via Primakoff (coupling to photons \(g_{a\gamma}\)), Bremsstrahlung, and Compton (coupling to electrons \(g_{ae}\)). The uncertainty on the fitting parameters includes the most recent solar models [<a href="https://www.aanda.org/articles/aa/full_html/2022/05/aa42971-21/aa42971-21.html">Magg et al 2022</a>].</p>
+
+<h3 id="view-notebook-ipynb"><a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/blob/main/notebooks/SolarAxions.ipynb">View Notebook (.ipynb)</a></h3>
+
+<hr />
+
+<p><img align="right" width="500" src="plots/plots_png/Primakoff_SolarAxion_flux_plot.png" /></p>
+
+<h2 id="primakoff">Primakoff</h2>
+
+\[g_{a\gamma}=10^{-12}\,\text{GeV}^{-1}\]
+
+<p>Plot (<a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Primakoff_SolarAxion_flux_plot.pdf">pdf</a>, <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Primakoff_SolarAxion_flux_plot.png">png</a>)</p>
+<h3> </h3>
+<h3 id="-1"> </h3>
+<h3 id="-2"> </h3>
+<h3 id="-3"> </h3>
+
+<hr />
+
+<p><img align="right" width="500" src="plots/plots_png/Bremsstrahlung_SolarAxion_flux_plot.png" /></p>
+
+<h2 id="bremsstrahlung">Bremsstrahlung</h2>
+
+\[g_{ae}=10^{-12}\]
+
+<p>Plot (<a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Bremsstrahlung_SolarAxion_flux_plot.pdf">pdf</a>, <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Bremsstrahlung_SolarAxion_flux_plot.png">png</a>)</p>
+
+<h3 id="-4"> </h3>
+<h3 id="-5"> </h3>
+<h3 id="-6"> </h3>
+<h3 id="-7"> </h3>
+
+<hr />
+
+<p><img align="right" width="500" src="plots/plots_png/Compton_SolarAxion_flux_plot.png" /></p>
+
+<h2 id="compton">Compton</h2>
+
+\[g_{ae}=10^{-12}\]
+
+<p>Plot (<a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Compton_SolarAxion_flux_plot.pdf">pdf</a>, <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Compton_SolarAxion_flux_plot.png">png</a>)</p>
+
+<h3 id="-8"> </h3>
+<h3 id="-9"> </h3>
+<h3 id="-10"> </h3>
+<h3 id="-11"> </h3>
+
+<hr />
+
+<h1 id="main-sequence-stars-axions">Main Sequence stars axions</h1>
+
+<h3 id="view-notebook-ipynb-1"><a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/blob/main/notebooks/MainSequenceAxions.ipynb">View Notebook (.ipynb)</a></h3>
+
+<hr />
+
+<p><img align="right" width="500" src="plots/plots_png/Primakoff_MSAxion_flux_plot.png" /></p>
+
+<h2 id="primakoff-1">Primakoff</h2>
+
+\[g_{a\gamma}=10^{-12}\,\text{GeV}^{-1}\]
+
+<p>Plot (<a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Primakoff_MSAxion_flux_plot.pdf">pdf</a>, <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Primakoff_MSAxion_flux_plot.png">png</a>)</p>
+<h3 id="-12"> </h3>
+<h3 id="-13"> </h3>
+<h3 id="-14"> </h3>
+<h3 id="-15"> </h3>
+
+<hr />
+
+<p><img align="right" width="500" src="plots/plots_png/Bremsstrahlung_MSAxion_flux_plot.png" /></p>
+
+<h2 id="bremsstrahlung-1">Bremsstrahlung</h2>
+
+\[g_{ae}=10^{-12}\]
+
+<p>Plot (<a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Bremsstrahlung_MSAxion_flux_plot.pdf">pdf</a>, <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Bremsstrahlung_MSAxion_flux_plot.png">png</a>)</p>
+
+<h3 id="-16"> </h3>
+<h3 id="-17"> </h3>
+<h3 id="-18"> </h3>
+<h3 id="-19"> </h3>
+
+<hr />
+
+<p><img align="right" width="500" src="plots/plots_png/Compton_MSAxion_flux_plot.png" /></p>
+
+<h2 id="compton-1">Compton</h2>
+
+\[g_{ae}=10^{-12}\]
+
+<p>Plot (<a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Compton_MSAxion_flux_plot.pdf">pdf</a>, <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Compton_MSAxion_flux_plot.png">png</a>)</p>
+
+<h3 id="-20"> </h3>
+<h3 id="-21"> </h3>
+<h3 id="-22"> </h3>
+<h3 id="-23"> </h3>
+
+<hr />
+
+<h1 id="red-giants-axions">Red Giants axions</h1>
+
+<hr />
+
+<h1 id="horizontal-branch-stars-axions">Horizontal Branch stars axions</h1>
+
+<hr />
+
+<h1 id="asymptotic-red-giants-axions">Asymptotic Red Giants axions</h1>
+
+<hr />
+
+<h1 id="white-dwarfs-axions">White Dwarfs axions</h1>
+
+<hr />
+
+<h1 id="red-supergiants-axions">Red Supergiants axions</h1>
+
+<hr />
+
+<h1 id="core-collapse-supernovae-axions">Core-collapse Supernovae axions</h1>
+
+<hr />
+
+<h1 id="neutron-stars-axions">Neutron stars axions</h1>
+
+<hr />
+
+<h1 id="binary-neutron-star-mergers-axions">Binary neutron star mergers axions</h1>
+
+
+        <footer class="site-footer">
+            
+            <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub
+                    Pages</a>.</span>
+        </footer>
+    </main>
+    
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+    
+</body>
+
+</html>

@@ -13,6 +13,10 @@ __pycache__/
 *.dSYM
 
 # Distribution / packaging
+Betelgeuse/
+_includes/
+env_ruby.yml
+env.yml
 .Python
 build/
 develop-eggs/
