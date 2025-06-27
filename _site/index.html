@@ -194,7 +194,7 @@
   </tbody>
 </table>
 
-<p><strong>Table:</strong> Fitting parameters for Eq.~\eqref{eq:fitprim}, where $M$ is in units of solar masses ${\rm M}<em>{\odot}$ and these fits are valid in the range $1-100~{\rm M}</em>{\odot}$.</p>
+<p><strong>Table:</strong> Summary of the fitting parameters to be used in the equation above, where \(M\) is in units of solar masses \({\rm M}_{\odot}\). These fits are valid in the range \(1-100~{\rm M}_{\odot}\).</p>
 
 <h3 id="view-notebook-ipynb-1"><a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/blob/main/notebooks/MainSequenceAxions.ipynb">View Notebook (.ipynb)</a></h3>
 
@@ -246,6 +246,31 @@
 
 <h1 id="red-giants-axions">Red Giants axions</h1>
 
+<p>Red Giants axions are mainly produced via their coupling to electrons, with the electron-ion bremsstrahlung process \(e + Ze \to e + Ze + a\) as the main production channel. This emission rate is studied in detail in Refs. [<a href="https://www.aanda.org/articles/aa/full_html/2022/05/aa42971-21/aa42971-21.html">Carenza, Lucente 2022</a>, <a href="https://arxiv.org/abs/2503.15630">Fiorillo et al.</a>]. The Red Giant axion emission spectrum is given by</p>
+
+\[\frac{dN_a}{dE_a dt}= 10^{39}\,\mathrm{keV}^{-1}\,\mathrm{s}^{-1}\left(\frac{g_{ae}}{10^{-13}}\right)^2\,C_0 \left(\frac{E}{E_0}\right)^\beta e^{-(1+\beta)\frac{E}{E_0}},\]
+
+<p>with</p>
+
+\[C_0=3.92\qquad E_0=19.63\,\,\mathrm{keV}\qquad \beta=1.25\,.\]
+
+<h3 id="view-notebook-ipynb-2"><a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/blob/main/notebooks/RedGiantAxions.ipynb">View Notebook (.ipynb)</a></h3>
+
+<hr />
+
+<p><img align="right" width="500" src="plots/plots_png/RGAxion_flux_plot.png" /></p>
+
+<h2 id="electron-ion-bremsstrahlung">Electron-ion bremsstrahlung</h2>
+
+\[g_{ae}=10^{-13}\]
+
+<p>Plot (<a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/RGAxion_flux_plot.pdf">pdf</a>, <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/RGAxion_flux_plot.png">png</a>)</p>
+
+<h3 id="-24"> </h3>
+<h3 id="-25"> </h3>
+<h3 id="-26"> </h3>
+<h3 id="-27"> </h3>
+
 <hr />
 
 <h1 id="horizontal-branch-stars-axions">Horizontal Branch stars axions</h1>
@@ -258,6 +283,31 @@
 
 <h1 id="white-dwarfs-axions">White Dwarfs axions</h1>
 
+<p>White Dwarfs axions are mainly produced via their coupling to electrons, with the electron-ion bremsstrahlung process \(e + Ze \to e + Ze + a\) as the main production channel involving mainly carbon and oxygen. The White Dwarf axion emission spectrum is given by</p>
+
+\[\frac{dN_a}{dE_a dt}= 10^{16}\,\mathrm{keV}^{-1}\,\mathrm{s}^{-1}\left(\frac{g_{ae}}{10^{-13}}\right)^2\,C_0 \left(\frac{E}{E_0}\right)^\beta e^{-(1+\beta)\frac{E}{E_0}},\]
+
+<p>with</p>
+
+\[C_0=1.25\qquad E_0=9.38\,\,\mathrm{keV}\qquad \beta=1.23\,.\]
+
+<h3 id="view-notebook-ipynb-3"><a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/blob/main/notebooks/WhiteDwarfAxions.ipynb">View Notebook (.ipynb)</a></h3>
+
+<hr />
+
+<p><img align="right" width="500" src="plots/plots_png/WDAxion_flux_plot.png" /></p>
+
+<h2 id="electron-ion-bremsstrahlung-1">Electron-ion bremsstrahlung</h2>
+
+\[g_{ae}=10^{-13}\]
+
+<p>Plot (<a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/WDAxion_flux_plot.pdf">pdf</a>, <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/WDAxion_flux_plot.png">png</a>)</p>
+
+<h3 id="-28"> </h3>
+<h3 id="-29"> </h3>
+<h3 id="-30"> </h3>
+<h3 id="-31"> </h3>
+
 <hr />
 
 <h1 id="red-supergiants-axions">Red Supergiants axions</h1>
@@ -265,6 +315,185 @@
 <hr />
 
 <h1 id="core-collapse-supernovae-axions">Core-collapse Supernovae axions</h1>
+
+<p>Axion emission from the inner regions of the SN core is expected to be strongly enhanced by the extremme temperature and density conditions, reaching values as high as \(T\sim 40\) GeV and \(\rho\sim 3\times 10^{14}\) g cm\(^{-3}\). The following spectrum adopts the 1D spherical symmetric GARCHING group’s SN model SFHo-s18.8 provided in the <a href="https://wwwmpa.mpa-garching.mpg.de/ccsnarchive//">Garching core-collapse SN research archive</a> and based on the neutrino-hydrodynamics code PROMETHEUS-VERTEX [<a href="https://www.aanda.org/articles/aa/abs/2002/46/aa2451/aa2451.html">Rampp and Janka</a>].
+The most efficient axion production channels from the SN core are related to their couplings to nuclear matter. The production in the nuclear medium of the SN core is due to NN bremsstrahlung \(N+N\to N+N+a\) and \(\pi N\) Compton-like process \(\pi + N \to a + N\). The bremsstrahlung axion spectrum can be described by</p>
+
+\[\left(\frac{d^2N_{a}}{dE_a\,dt}\right)_{NN}=A_{NN}\,\left(\frac{g_{ap}}{5\times 10^{-10}}\right)^2\,\left(\frac{E_a}{E_{NN}^0}\right)^{\beta_{NN}} \exp\left[{-(\beta_{NN}+1)\,\frac{E_a}{E^0_{NN}}}\right]\,,\]
+
+<p>with fitting parameters referring to axion emission at different instants after the core-bounce \(t_{\rm pb}\) provided in the Table below.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>\(t_{\mathrm{pb}}\,[\mathrm{s}]\)</th>
+      <th>\(E^0_{NN}\,[\mathrm{MeV}]\)</th>
+      <th>\(\beta_{NN}\)</th>
+      <th>\(A_{NN}\,[\mathrm{MeV}^{-1}\,\mathrm{s}^{-1}]\)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>70.19</td>
+      <td>1.44</td>
+      <td>\(4.56 \times 10^{54}\)</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>70.39</td>
+      <td>1.42</td>
+      <td>\(4.31 \times 10^{54}\)</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>56.91</td>
+      <td>1.36</td>
+      <td>\(2.41 \times 10^{54}\)</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>58.36</td>
+      <td>1.31</td>
+      <td>\(1.10 \times 10^{54}\)</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>47.41</td>
+      <td>1.24</td>
+      <td>\(3.95 \times 10^{53}\)</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>35.02</td>
+      <td>1.17</td>
+      <td>\(1.04 \times 10^{53}\)</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>23.98</td>
+      <td>1.12</td>
+      <td>\(2.20 \times 10^{52}\)</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>16.10</td>
+      <td>1.10</td>
+      <td>\(4.01 \times 10^{51}\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Table:</strong> Summary of the fitting parameters to be used in the NN bremsstrahlung case.</p>
+
+<p>The pion conversion emission rate can be estimated as</p>
+
+\[\left(\frac{d^2N_{a}}{dE_a\,dt}\right)_{\pi N}=A_{\pi N}\,\left(\frac{g_{ap}}{5\times 10^{-10}}\right)^2\,\left(\frac{E_a-\omega_c}{E^0_{\pi N}}\right)^{\beta_{\pi N}} \exp\left[{-(\beta_{\pi N}+1)\,\frac{E_a-\omega_c}{E^0_{\pi N}}}\right]\Theta(E_a-\omega_c)\,,\]
+
+<p>where \(\Theta(E)\) is the Heavisde theta function.The fitting parameters for different times after the SN core bounce are reported in the following table.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>\(t_{\mathrm{pb}}\,[\mathrm{s}]\)</th>
+      <th>\(E^{0}_{\pi N}\,[\mathrm{MeV}]\)</th>
+      <th>\(\beta_{\pi N}\)</th>
+      <th>\(A_{\pi N}\,[\mathrm{MeV}^{-1}\,\mathrm{s}^{-1}]\)</th>
+      <th>\(\omega_c\,[\mathrm{MeV}]\)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>\(1\)</td>
+      <td>\(126.43\)</td>
+      <td>\(1.20\)</td>
+      <td>\(2.77 \times 10^{54}\)</td>
+      <td>\(103.27\)</td>
+    </tr>
+    <tr>
+      <td>\(2\)</td>
+      <td>\(94.47\)</td>
+      <td>\(1.03\)</td>
+      <td>\(1.24 \times 10^{54}\)</td>
+      <td>\(98.87\)</td>
+    </tr>
+    <tr>
+      <td>\(3\)</td>
+      <td>\(56.14\)</td>
+      <td>\(0.54\)</td>
+      <td>\(9.78 \times 10^{52}\)</td>
+      <td>\(107.00\)</td>
+    </tr>
+    <tr>
+      <td>\(4\)</td>
+      <td>\(37.20\)</td>
+      <td>\(0.65\)</td>
+      <td>\(2.20 \times 10^{52}\)</td>
+      <td>\(107.06\)</td>
+    </tr>
+    <tr>
+      <td>\(5\)</td>
+      <td>\(25.02\)</td>
+      <td>\(0.47\)</td>
+      <td>\(3.63 \times 10^{51}\)</td>
+      <td>\(108.59\)</td>
+    </tr>
+    <tr>
+      <td>\(6\)</td>
+      <td>\(15.62\)</td>
+      <td>\(0.40\)</td>
+      <td>\(2.53 \times 10^{50}\)</td>
+      <td>\(108.04\)</td>
+    </tr>
+    <tr>
+      <td>\(7\)</td>
+      <td>\(9.18\)</td>
+      <td>\(0.37\)</td>
+      <td>\(3.10 \times 10^{48}\)</td>
+      <td>\(108.33\)</td>
+    </tr>
+    <tr>
+      <td>\(8\)</td>
+      <td>\(5.64\)</td>
+      <td>\(0.37\)</td>
+      <td>\(6.64 \times 10^{45}\)</td>
+      <td>\(108.37\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Table:</strong> Summary of the fitting parameters to be used in the pion conversion case.</p>
+
+<h3 id="view-notebook-ipynb-4"><a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/blob/main/notebooks/CoreCollapseSNAxions.ipynb">View Notebook (.ipynb)</a></h3>
+
+<hr />
+
+<p><img align="right" width="500" src="plots/plots_png/Bremsstrahlung_SNAxion_flux_plot.png" /></p>
+
+<h2 id="nn-bremsstrahlung">NN Bremsstrahlung</h2>
+
+\[g_{ap}=5\times10^{-10}\]
+
+<p>Plot (<a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Bremsstrahlung_SNAxion_flux_plot.pdf">pdf</a>, <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Bremsstrahlung_SNAxion_flux_plot.png">png</a>)</p>
+<h3 id="-32"> </h3>
+<h3 id="-33"> </h3>
+<h3 id="-34"> </h3>
+<h3 id="-35"> </h3>
+
+<hr />
+
+<p><img align="right" width="500" src="plots/plots_png/PionConversion_SNAxion_flux_plot.png" /></p>
+
+<h2 id="pion-conversion">Pion conversion</h2>
+
+\[g_{ap}=5\times10^{-10}\]
+
+<p>Plot (<a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/PionConversipn_SNAxion_flux_plot.pdf">pdf</a>, <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/PionConversion_SNAxion_flux_plot.png">png</a>)</p>
+
+<h3 id="-36"> </h3>
+<h3 id="-37"> </h3>
+<h3 id="-38"> </h3>
+<h3 id="-39"> </h3>
 
 <hr />
 

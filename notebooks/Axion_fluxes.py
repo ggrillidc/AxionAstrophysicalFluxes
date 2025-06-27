@@ -126,3 +126,236 @@ def plot_MainSequenceAxion_flux(proc: str, Eamin: float, Eamax: float):
     plt.savefig(plotfolder + 'plots_png/' + proc + '_MSAxion_flux_plot.png', bbox_inches='tight')
     plt.show()
     pass
+
+
+
+def RGax_flux(Ea: float, gae: float) -> float:
+    """
+    Return the solar axion flux for the process_i.
+
+    Returns
+    -------
+    flux : function
+        The axion flux function.
+    """
+
+    C0 = 3.92
+    E0 = 19.63
+    beta = 1.25
+
+    return 1e39 * C0 * (gae / 1e-13)**2 * (Ea / E0)**beta * np.exp(-(1 + beta) * Ea / E0)
+
+def plot_RedGiantAxion_flux(Eamin: float, Eamax: float):
+    
+    plt.figure(figsize=(10, 6))
+    # Energy range
+    E_values = np.linspace(Eamin, Eamax, (Eamax-Eamin)*20)  # Energy values from 0 to 10 keV
+    # Compute axion flux
+    flux1 = RGax_flux(E_values, 1e-13)
+    # Customize the range of the plot
+    maxflux = np.max(flux1)
+    plt.xlim(Eamin, Eamax)  # Custom x-axis limits
+    plt.ylim(0, maxflux*1.1*10**(-int(np.log10(maxflux))))  # Custom y-axis limits   
+    # Plot the axion flux
+    fl1 = plt.plot(E_values, flux1*10**(-int(np.log10(maxflux))), color='black')
+    # Add labels and legend
+    plt.xlabel(r'$E_a ({\rm keV})$', fontsize=30)
+    plt.ylabel(r'$\frac{d N_{a}}{d E_a\,d t}(\times10^{' + str(int(np.log10(maxflux))) + r'}\,{\rm keV}^{-1}{\rm s}^{-1})$', fontsize=30)
+    plt.grid(True) 
+    # Save the plot as PDF
+    plt.savefig(plotfolder + 'RGAxion_flux_plot.pdf', bbox_inches='tight')
+    plt.savefig(plotfolder + 'plots_png/RGAxion_flux_plot.png', bbox_inches='tight')
+    plt.show()
+    pass
+
+
+
+
+def WDax_flux(Ea: float, gae: float) -> float:
+    """
+    Return the solar axion flux for the process_i.
+
+    Returns
+    -------
+    flux : function
+        The axion flux function.
+    """
+
+    C0 = 1.25
+    E0 = 9.38
+    beta = 1.23
+
+    return 1e16 * C0 * (gae / 1e-13)**2 * (Ea / E0)**beta * np.exp(-(1 + beta) * Ea / E0)
+
+def plot_WhiteDwarfAxion_flux(Eamin: float, Eamax: float):
+    
+    plt.figure(figsize=(10, 6))
+    # Energy range
+    E_values = np.linspace(Eamin, Eamax, (Eamax-Eamin)*20)  # Energy values from 0 to 10 keV
+    # Compute axion flux
+    flux1 = WDax_flux(E_values, 1e-13)
+    # Customize the range of the plot
+    maxflux = np.max(flux1)
+    plt.xlim(Eamin, Eamax)  # Custom x-axis limits
+    plt.ylim(0, maxflux*1.1*10**(-int(np.log10(maxflux))))  # Custom y-axis limits   
+    # Plot the axion flux
+    fl1 = plt.plot(E_values, flux1*10**(-int(np.log10(maxflux))), color='black')
+    # Add labels and legend
+    plt.xlabel(r'$E_a ({\rm keV})$', fontsize=30)
+    plt.ylabel(r'$\frac{d N_{a}}{d E_a\,d t}(\times10^{' + str(int(np.log10(maxflux))) + r'}\,{\rm keV}^{-1}{\rm s}^{-1})$', fontsize=30)
+    plt.grid(True) 
+    # Save the plot as PDF
+    plt.savefig(plotfolder + 'WDAxion_flux_plot.pdf', bbox_inches='tight')
+    plt.savefig(plotfolder + 'plots_png/WDAxion_flux_plot.png', bbox_inches='tight')
+    plt.show()
+    pass
+
+
+
+
+def get_NNbremsstrahlungSNaxion_parameters(t):
+    """
+    Returns (E0_NN [MeV], beta_NN, A_NN [MeV^-1 s^-1]) 
+    for a given t_pb [s].
+    """
+    data = {
+        1: (70.19, 1.44, 4.56e54),
+        2: (70.39, 1.42, 4.31e54),
+        3: (56.91, 1.36, 2.41e54),
+        4: (58.36, 1.31, 1.10e54),
+        5: (47.41, 1.24, 3.95e53),
+        6: (35.02, 1.17, 1.04e53),
+        7: (23.98, 1.12, 2.20e52),
+        8: (16.10, 1.10, 4.01e51),
+    }
+    
+    if t not in data:
+        raise ValueError(f"Unsupported t = {t}. Available t values are {list(data.keys())}")
+    
+    return data[t]
+
+
+
+def NNbremsstrahlungSNax_flux(Ea: float, g_ap: float, t_pb: int) -> float:
+    """
+    Return the axion flux for the NN bremsstrahlung process in a supernova.
+    
+    Parameters
+    ----------
+    Ea : float
+        Axion energy in MeV.
+    t_pb : int
+        Time post-bounce in seconds (1 to 8).
+    
+    Returns
+    -------
+    float
+        The axion flux in MeV^-1 s^-1.
+    """
+    
+    E0_NN, beta_NN, A_NN = get_NNbremsstrahlungSNaxion_parameters(t_pb)
+    
+    return A_NN * (g_ap / 5e-10)**2 * (Ea / E0_NN)**beta_NN * np.exp(- (beta_NN + 1) * (Ea / E0_NN))
+
+def plot_NNbremsstrahlungSNAxion_flux(Eamin: float, Eamax: float):
+    
+    plt.figure(figsize=(10, 6))
+    # Energy range
+    E_values = np.linspace(Eamin, Eamax, (Eamax-Eamin)*20)  # Energy values from 0 to 10 keV
+    # Compute axion flux
+    flux1 = NNbremsstrahlungSNax_flux(E_values, 5e-10, 1)
+    flux2 = NNbremsstrahlungSNax_flux(E_values, 5e-10, 3)
+    flux3 = NNbremsstrahlungSNax_flux(E_values, 5e-10, 5)
+    # Customize the range of the plot
+    maxflux = max(np.max(flux1),np.max(flux2),np.max(flux3))
+    plt.xlim(Eamin, Eamax)  # Custom x-axis limits
+    plt.ylim(0, maxflux*1.1*10**(-int(np.log10(maxflux))))  # Custom y-axis limits   
+    # Plot the axion flux
+    fl1 = plt.plot(E_values, flux1*10**(-int(np.log10(maxflux))), color='black')
+    fl2 = plt.plot(E_values, flux2*10**(-int(np.log10(maxflux))), color='blue')
+    fl3 = plt.plot(E_values, flux3*10**(-int(np.log10(maxflux))), color='red')
+    # Add labels and legend
+    plt.xlabel(r'$E_a ({\rm keV})$', fontsize=30)
+    plt.ylabel(r'$\frac{d N_{a}}{d E_a\,d t}(\times10^{' + str(int(np.log10(maxflux))) + r'}\,{\rm keV}^{-1}{\rm s}^{-1})$', fontsize=30)
+    plt.grid(True) 
+    h = [fl1[0], fl2[0], fl3[0]]
+    # r'$e^-$ at rest']
+    l = [r'$t_\mathrm{pb}=1$ s', r'$t_\mathrm{pb}=3$ s', r'$t_\mathrm{pb}=5$ s']
+    leg = plt.legend(h, l, loc='upper right', fontsize=20, facecolor='white', framealpha=1)
+    # Save the plot as PDF
+    plt.savefig(plotfolder + 'Bremsstrahlung_SNAxion_flux_plot.pdf', bbox_inches='tight')
+    plt.savefig(plotfolder + 'plots_png/Bremsstrahlung_SNAxion_flux_plot.png', bbox_inches='tight')
+    plt.show()
+    pass
+
+
+
+def get_piNSNaxion_parameters(t):
+    """
+    Returns (E0_piN [MeV], beta_piN, A_piN [MeV^-1 s^-1], omega_c [MeV])
+    for a given t_pb [s].
+    """
+    data = {
+        1: (126.43, 1.20, 2.77e54, 103.27),
+        2: (94.47,  1.03, 1.24e54, 98.87),
+        3: (56.14,  0.54, 9.78e52, 107.00),
+        4: (37.20,  0.65, 2.20e52, 107.06),
+        5: (25.02,  0.47, 3.63e51, 108.59),
+        6: (15.62,  0.40, 2.53e50, 108.04),
+        7: (9.18,   0.37, 3.10e48, 108.33),
+        8: (5.64,   0.37, 6.64e45, 108.37),
+    }
+    
+    if t not in data:
+        raise ValueError(f"Unsupported t = {t}. Available t values are {list(data.keys())}")
+    
+    return data[t]
+
+def PionConversionSNAxion_flux(E_a, g_ap, tpb=1):
+    """
+    Computes (d^2N_a) / (dE_a dt) for piN.
+    """
+    E0_piN, beta_piN, A_piN, omega_c = get_piNSNaxion_parameters(tpb)  # Using t_pb = 1 as default
+    delta_E = E_a - omega_c
+    # if delta_E < 0:
+    #     return 0.0
+    delta_E=np.where(delta_E < 0, 0, delta_E)  # Ensure delta_E is non-negative
+    
+    factor_g = (g_ap / 5e-10)**2
+    factor_power = (delta_E / E0_piN)**beta_piN
+    factor_exp = np.exp(- (beta_piN + 1) * delta_E / E0_piN)
+    
+    return A_piN * factor_g * factor_power * factor_exp
+
+
+
+def plot_pionConversionSNAxion_flux(Eamin: float, Eamax: float):
+    
+    plt.figure(figsize=(10, 6))
+    # Energy range
+    E_values = np.linspace(Eamin, Eamax, (Eamax-Eamin)*20)  # Energy values from 0 to 10 keV
+    # Compute axion flux
+    flux1 = PionConversionSNAxion_flux(E_values, 5e-10, 1)
+    flux2 = PionConversionSNAxion_flux(E_values, 5e-10, 3)
+    flux3 = PionConversionSNAxion_flux(E_values, 5e-10, 5)
+    # Customize the range of the plot
+    maxflux = max(np.max(flux1),np.max(flux2),np.max(flux3))
+    plt.xlim(Eamin, Eamax)  # Custom x-axis limits
+    plt.ylim(0, maxflux*1.1*10**(-int(np.log10(maxflux))))  # Custom y-axis limits   
+    # Plot the axion flux
+    fl1 = plt.plot(E_values, flux1*10**(-int(np.log10(maxflux))), color='black')
+    fl2 = plt.plot(E_values, flux2*10**(-int(np.log10(maxflux))), color='blue')
+    fl3 = plt.plot(E_values, flux3*10**(-int(np.log10(maxflux))), color='red')
+    # Add labels and legend
+    plt.xlabel(r'$E_a ({\rm keV})$', fontsize=30)
+    plt.ylabel(r'$\frac{d N_{a}}{d E_a\,d t}(\times10^{' + str(int(np.log10(maxflux))) + r'}\,{\rm keV}^{-1}{\rm s}^{-1})$', fontsize=30)
+    plt.grid(True) 
+    h = [fl1[0], fl2[0], fl3[0]]
+    # r'$e^-$ at rest']
+    l = [r'$t_\mathrm{pb}=1$ s', r'$t_\mathrm{pb}=3$ s', r'$t_\mathrm{pb}=5$ s']
+    leg = plt.legend(h, l, loc='upper right', fontsize=20, facecolor='white', framealpha=1)
+    # Save the plot as PDF
+    plt.savefig(plotfolder + 'PionConversion_SNAxion_flux_plot.pdf', bbox_inches='tight')
+    plt.savefig(plotfolder + 'plots_png/PionConversion_SNAxion_flux_plot.png', bbox_inches='tight')
+    plt.show()
+    pass
