@@ -50,7 +50,7 @@ def plot_SolarAxion_flux(proc: str, Eamin: float, Eamax: float):
     
     plt.figure(figsize=(10, 6))
     # Energy range
-    E_values = np.linspace(Eamin, Eamax, (Eamax-Eamin)*20)  # Energy values from 0 to 10 keV
+    E_values = np.linspace(Eamin, Eamax, int((Eamax-Eamin)*20))  # Energy values from 0 to 10 keV
     # Compute axion flux
     flux1 = SolAx_flux(E_values, 1e-12, proc)*1.e-6
     # Customize the range of the plot
@@ -102,7 +102,7 @@ def plot_MainSequenceAxion_flux(proc: str, Eamin: float, Eamax: float):
     
     plt.figure(figsize=(10, 6))
     # Energy range
-    E_values = np.linspace(Eamin, Eamax, (Eamax-Eamin)*20)  # Energy values from 0 to 10 keV
+    E_values = np.linspace(Eamin, Eamax, int(Eamax-Eamin)*20)  # Energy values from 0 to 10 keV
     # Compute axion flux
     flux1 = MSax_flux(E_values, 1e-12, proc, 5)
     flux2 = MSax_flux(E_values, 1e-12, proc, 20)
@@ -111,8 +111,8 @@ def plot_MainSequenceAxion_flux(proc: str, Eamin: float, Eamax: float):
     plt.xlim(Eamin, Eamax)  # Custom x-axis limits
     plt.ylim(0, maxflux*1.1*10**(-int(np.log10(maxflux))))  # Custom y-axis limits   
     # Plot the axion flux
-    fl1 = plt.plot(E_values, flux1*10**(-int(np.log10(maxflux))), color='black')
-    fl2 = plt.plot(E_values, flux2*10**(-int(np.log10(maxflux))), color='blue')
+    fl1 = plt.plot(E_values, flux1*10**(-int(np.log10(maxflux))), color='black', ls='-')
+    fl2 = plt.plot(E_values, flux2*10**(-int(np.log10(maxflux))), color='black', ls='--')
     # Add labels and legend
     plt.xlabel(r'$E_a ({\rm keV})$', fontsize=30)
     plt.ylabel(r'$\frac{d\Phi_{a}}{d E_a}(\times10^{' + str(int(np.log10(maxflux))) + r'}\,{\rm keV}^{-1}{\rm s}^{-1}{\rm cm}^{-2})$', fontsize=30)
@@ -130,26 +130,19 @@ def plot_MainSequenceAxion_flux(proc: str, Eamin: float, Eamax: float):
 
 
 def RGax_flux(Ea: float, gae: float) -> float:
-    """
-    Return the solar axion flux for the process_i.
-
-    Returns
-    -------
-    flux : function
-        The axion flux function.
-    """
 
     C0 = 3.92
     E0 = 19.63
     beta = 1.25
 
-    return 1e39 * C0 * (gae / 1e-13)**2 * (Ea / E0)**beta * np.exp(-(1 + beta) * Ea / E0)
+    return 1e39 * C0* (gae / 1e-13)**2 * (Ea / E0)**beta * np.exp(-(1 + beta) * Ea / E0) 
+
 
 def plot_RedGiantAxion_flux(Eamin: float, Eamax: float):
     
     plt.figure(figsize=(10, 6))
     # Energy range
-    E_values = np.linspace(Eamin, Eamax, (Eamax-Eamin)*20)  # Energy values from 0 to 10 keV
+    E_values = np.linspace(Eamin, Eamax, int(Eamax-Eamin)*20)  # Energy values from 0 to 10 keV
     # Compute axion flux
     flux1 = RGax_flux(E_values, 1e-13)
     # Customize the range of the plot
@@ -165,6 +158,38 @@ def plot_RedGiantAxion_flux(Eamin: float, Eamax: float):
     # Save the plot as PDF
     plt.savefig(plotfolder + 'RGAxion_flux_plot.pdf', bbox_inches='tight')
     plt.savefig(plotfolder + 'plots_png/RGAxion_flux_plot.png', bbox_inches='tight')
+    plt.show()
+    pass
+
+def HBax_flux(Ea: float, gagamma: float) -> float:
+
+    C0 = 94.76
+    E0 = 36.59
+    beta = 2.74
+
+    return 1e36 * C0 * (gagamma / 1e-12)**2 * (Ea / E0)**beta * np.exp(-(1 + beta) * Ea / E0) 
+
+
+def plot_HorizontalBranchAxion_flux(Eamin: float, Eamax: float):
+    
+    plt.figure(figsize=(10, 6))
+    # Energy range
+    E_values = np.linspace(Eamin, Eamax, int(Eamax-Eamin)*20)  # Energy values from 0 to 10 keV
+    # Compute axion flux
+    flux1 = HBax_flux(E_values, 1e-12)
+    # Customize the range of the plot
+    maxflux = np.max(flux1)
+    plt.xlim(Eamin, Eamax)  # Custom x-axis limits
+    plt.ylim(0, maxflux*1.1*10**(-int(np.log10(maxflux))))  # Custom y-axis limits   
+    # Plot the axion flux
+    fl1 = plt.plot(E_values, flux1*10**(-int(np.log10(maxflux))), color='black')
+    # Add labels and legend
+    plt.xlabel(r'$E_a ({\rm keV})$', fontsize=30)
+    plt.ylabel(r'$\frac{d N_{a}}{d E_a\,d t}(\times10^{' + str(int(np.log10(maxflux))) + r'}\,{\rm keV}^{-1}{\rm s}^{-1})$', fontsize=30)
+    plt.grid(True) 
+    # Save the plot as PDF
+    plt.savefig(plotfolder + 'HBAxion_flux_plot.pdf', bbox_inches='tight')
+    plt.savefig(plotfolder + 'plots_png/HBAxion_flux_plot.png', bbox_inches='tight')
     plt.show()
     pass
 
@@ -191,7 +216,7 @@ def plot_WhiteDwarfAxion_flux(Eamin: float, Eamax: float):
     
     plt.figure(figsize=(10, 6))
     # Energy range
-    E_values = np.linspace(Eamin, Eamax, (Eamax-Eamin)*20)  # Energy values from 0 to 10 keV
+    E_values = np.linspace(Eamin, Eamax, int(Eamax-Eamin)*20)  # Energy values from 0 to 10 keV
     # Compute axion flux
     flux1 = WDax_flux(E_values, 1e-13)
     # Customize the range of the plot
@@ -261,7 +286,7 @@ def plot_NNbremsstrahlungSNAxion_flux(Eamin: float, Eamax: float):
     
     plt.figure(figsize=(10, 6))
     # Energy range
-    E_values = np.linspace(Eamin, Eamax, (Eamax-Eamin)*20)  # Energy values from 0 to 10 keV
+    E_values = np.linspace(Eamin, Eamax, int(Eamax-Eamin)*20)  # Energy values from 0 to 10 keV
     # Compute axion flux
     flux1 = NNbremsstrahlungSNax_flux(E_values, 5e-10, 1)
     flux2 = NNbremsstrahlungSNax_flux(E_values, 5e-10, 3)
@@ -271,9 +296,9 @@ def plot_NNbremsstrahlungSNAxion_flux(Eamin: float, Eamax: float):
     plt.xlim(Eamin, Eamax)  # Custom x-axis limits
     plt.ylim(0, maxflux*1.1*10**(-int(np.log10(maxflux))))  # Custom y-axis limits   
     # Plot the axion flux
-    fl1 = plt.plot(E_values, flux1*10**(-int(np.log10(maxflux))), color='black')
-    fl2 = plt.plot(E_values, flux2*10**(-int(np.log10(maxflux))), color='blue')
-    fl3 = plt.plot(E_values, flux3*10**(-int(np.log10(maxflux))), color='red')
+    fl1 = plt.plot(E_values, flux1*10**(-int(np.log10(maxflux))), color='black', ls='-')
+    fl2 = plt.plot(E_values, flux2*10**(-int(np.log10(maxflux))), color='black', ls='--')
+    fl3 = plt.plot(E_values, flux3*10**(-int(np.log10(maxflux))), color='black', ls='-.')
     # Add labels and legend
     plt.xlabel(r'$E_a ({\rm keV})$', fontsize=30)
     plt.ylabel(r'$\frac{d N_{a}}{d E_a\,d t}(\times10^{' + str(int(np.log10(maxflux))) + r'}\,{\rm keV}^{-1}{\rm s}^{-1})$', fontsize=30)
@@ -333,7 +358,7 @@ def plot_pionConversionSNAxion_flux(Eamin: float, Eamax: float):
     
     plt.figure(figsize=(10, 6))
     # Energy range
-    E_values = np.linspace(Eamin, Eamax, (Eamax-Eamin)*20)  # Energy values from 0 to 10 keV
+    E_values = np.linspace(Eamin, Eamax, int(Eamax-Eamin)*20)  # Energy values from 0 to 10 keV
     # Compute axion flux
     flux1 = PionConversionSNAxion_flux(E_values, 5e-10, 1)
     flux2 = PionConversionSNAxion_flux(E_values, 5e-10, 3)
@@ -343,9 +368,9 @@ def plot_pionConversionSNAxion_flux(Eamin: float, Eamax: float):
     plt.xlim(Eamin, Eamax)  # Custom x-axis limits
     plt.ylim(0, maxflux*1.1*10**(-int(np.log10(maxflux))))  # Custom y-axis limits   
     # Plot the axion flux
-    fl1 = plt.plot(E_values, flux1*10**(-int(np.log10(maxflux))), color='black')
-    fl2 = plt.plot(E_values, flux2*10**(-int(np.log10(maxflux))), color='blue')
-    fl3 = plt.plot(E_values, flux3*10**(-int(np.log10(maxflux))), color='red')
+    fl1 = plt.plot(E_values, flux1*10**(-int(np.log10(maxflux))), color='black', ls='-')
+    fl2 = plt.plot(E_values, flux2*10**(-int(np.log10(maxflux))), color='black', ls='--')
+    fl3 = plt.plot(E_values, flux3*10**(-int(np.log10(maxflux))), color='black', ls='-.')
     # Add labels and legend
     plt.xlabel(r'$E_a ({\rm keV})$', fontsize=30)
     plt.ylabel(r'$\frac{d N_{a}}{d E_a\,d t}(\times10^{' + str(int(np.log10(maxflux))) + r'}\,{\rm keV}^{-1}{\rm s}^{-1})$', fontsize=30)
@@ -359,3 +384,141 @@ def plot_pionConversionSNAxion_flux(Eamin: float, Eamax: float):
     plt.savefig(plotfolder + 'plots_png/PionConversion_SNAxion_flux_plot.png', bbox_inches='tight')
     plt.show()
     pass
+
+
+
+def get_RedSupergiants_parameters(model: int, process: str) -> tuple:
+    """
+    Returns (C, E, beta) for the given model number and process name.
+
+    Args:
+        model (int): Model number from 1 to 8.
+        process (str): One of 'Primakoff', 'Bremsstrahlung', or 'Compton'.
+
+    Returns:
+        tuple: (C, E, beta) values.
+    """
+    data = {
+        1: {
+            'Primakoff':      (3.36, 74.7, 2.10),
+            'Bremsstrahlung': (2.18e-2, 36.1, 0.732),
+            'Compton':        (5.24, 115, 3.12)
+        },
+        2: {
+            'Primakoff':      (9.70, 173, 2.01),
+            'Bremsstrahlung': (0.530, 95.3, 0.857),
+            'Compton':        (116, 267, 3.18)
+        },
+        3: {
+            'Primakoff':      (13.1, 208, 2.02),
+            'Bremsstrahlung': (1.06, 118, 0.901),
+            'Compton':        (211, 315, 3.18)
+        },
+        4: {
+            'Primakoff':      (26.9, 339, 1.97),
+            'Bremsstrahlung': (8.53, 226, 1.08),
+            'Compton':        (991, 489, 3.23)
+        },
+        5: {
+            'Primakoff':      (23.3, 367, 1.85),
+            'Bremsstrahlung': (11.3, 255, 1.10),
+            'Compton':        (991, 525, 3.15)
+        },
+        6: {
+            'Primakoff':      (31.5, 495, 1.77),
+            'Bremsstrahlung': (23.1, 333, 1.09),
+            'Compton':        (1430, 680, 2.90)
+        },
+        7: {
+            'Primakoff':      (94.5, 858, 1.89),
+            'Bremsstrahlung': (73.5, 593, 1.11),
+            'Compton':        (8430, 1090, 3.09)
+        },
+        8: {
+            'Primakoff':      (92.8, 1000, 1.79),
+            'Bremsstrahlung': (86.0, 685, 1.07),
+            'Compton':        (8030, 1260, 2.85)
+        }
+    }
+
+    process = process.capitalize()
+    if model not in data:
+        raise ValueError(f"Model {model} not found. Available models: {list(data.keys())}")
+    if process not in data[model]:
+        raise ValueError(f"Process '{process}' not found. Choose from 'Primakoff', 'Bremsstrahlung', or 'Compton'.")
+
+    return data[model][process]
+
+
+def RedSupergiantsAxion_flux(E: float, gref:float, model: int, process: str):
+    """
+    Computes the differential emission rate dṄa/dE for a single process
+    (Primakoff, Bremsstrahlung, or Compton) for the given model, energy E (in keV),
+    and reference coupling (gagamma/(1e-11 GeV^{-1})) or (gae/1e-13).
+
+    Args:
+        model (int): Model number (1 to 8).
+        process (str): Process name ('Primakoff', 'Bremsstrahlung', or 'Compton').
+        E (float): Energy in keV.
+        g_13 (float): Dimensionless coupling for Bremsstrahlung and Compton (scaled to 10^-13).
+        g_11 (float): Dimensionless coupling for Primakoff (scaled to 10^-11).
+
+    Returns:
+        float: The differential emission rate in (keV s)^-1.
+    """
+    
+    # Extract parameters
+    C, E0, beta = get_RedSupergiants_parameters(model, process)
+
+    coupling = gref
+    
+    # Compute the rate
+    rate = 1e42 * C * coupling**2 * (E / E0)**beta * np.exp(-(beta + 1) * E / E0)
+
+    return rate
+
+
+
+def plot_RedSupergiantsAxion_flux(proc: str, Eamin: float, Eamax: float):
+    
+    plt.figure(figsize=(10, 6))
+    # Energy range
+    E_values = np.linspace(Eamin, Eamax, int(Eamax-Eamin)*20)  # Energy values from 0 to 10 keV
+    # Compute axion flux
+    flux1 = RedSupergiantsAxion_flux(E_values, 1, 1, proc)
+    flux2 = RedSupergiantsAxion_flux(E_values, 1, 2, proc)
+    flux3 = RedSupergiantsAxion_flux(E_values, 1, 3, proc)
+    flux4 = RedSupergiantsAxion_flux(E_values, 1, 4, proc)
+    flux5 = RedSupergiantsAxion_flux(E_values, 1, 5, proc)
+    flux6 = RedSupergiantsAxion_flux(E_values, 1, 6, proc)
+    flux7 = RedSupergiantsAxion_flux(E_values, 1, 7, proc)
+    flux8 = RedSupergiantsAxion_flux(E_values, 1, 8, proc)
+    # Customize the range of the plot
+    maxflux = max(np.max(flux1),np.max(flux2),np.max(flux3),np.max(flux4),np.max(flux5),np.max(flux6),np.max(flux7),np.max(flux8))
+    plt.xlim(Eamin, Eamax)  # Custom x-axis limits
+    plt.ylim(0, maxflux*1.1*10**(-int(np.log10(maxflux))))  # Custom y-axis limits   
+    # Plot the axion flux
+    fl1 = plt.plot(E_values, flux1*10**(-int(np.log10(maxflux))), color='black', ls='-')
+    fl2 = plt.plot(E_values, flux2*10**(-int(np.log10(maxflux))), color='black', ls='--')
+    fl3 = plt.plot(E_values, flux3*10**(-int(np.log10(maxflux))), color='black', ls='-.')
+    fl4 = plt.plot(E_values, flux4*10**(-int(np.log10(maxflux))), color='black', ls=':')
+    fl5 = plt.plot(E_values, flux5*10**(-int(np.log10(maxflux))), color='red', ls='-')
+    fl6 = plt.plot(E_values, flux6*10**(-int(np.log10(maxflux))), color='red', ls='--')
+    fl7 = plt.plot(E_values, flux7*10**(-int(np.log10(maxflux))), color='red', ls='-.')
+    fl8 = plt.plot(E_values, flux8*10**(-int(np.log10(maxflux))), color='red', ls=':')
+    # Customize the range of the
+    # Add labels and legend
+    plt.xlabel(r'$E_a ({\rm keV})$', fontsize=30)
+    plt.ylabel(r'$\frac{d\Phi_{a}}{d E_a}(\times10^{' + str(int(np.log10(maxflux))) + r'}\,{\rm keV}^{-1}{\rm s}^{-1}{\rm cm}^{-2})$', fontsize=30)
+    plt.grid(True) 
+    h = [fl1[0], fl2[0], fl3[0], fl4[0], fl5[0], fl6[0], fl7[0], fl8[0]]
+    # r'$e^-$ at rest']
+    l = [r'He burning', r'start C burning', r'C burning', r'start Ne burning', r'start O burning', r'O burning', r'start Si burning', r'Si burning']
+    leg = plt.legend(h, l, loc='upper right', fontsize=20, facecolor='white', framealpha=1)
+    # Save the plot as PDF
+    plt.savefig(plotfolder + proc + '_RSGAxion_flux_plot.pdf', bbox_inches='tight')
+    plt.savefig(plotfolder + 'plots_png/' + proc + '_RSGAxion_flux_plot.png', bbox_inches='tight')
+    plt.show()
+    pass
+
+
