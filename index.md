@@ -20,11 +20,6 @@ use_math: true
     margin: auto;
   }
 
-  /* .toc-grid ul {
-    list-style: none;
-    padding-left: 0;
-  } */
-
   .toc-grid li {
     margin-bottom: 0.5em;
   }
@@ -35,7 +30,7 @@ use_math: true
   }
 </style>
 
-<h1>Contents</h1>
+<h1>Table of contents</h1>
 <div class="toc-grid">
   <ul>
     <li><a href="#solar-axions">Solar Axions</a>
@@ -137,7 +132,8 @@ use_math: true
 
 
 <details open id="solar-axions">
-<summary><h1>Solar Axions</h1></summary>
+<!-- <summary><h1>Solar Axions</h1></summary> -->
+<summary><span style="font-size:2em;font-weight:bold;color:#228B22;">Solar Axions</span></summary>
 
 
 An accurate fit of solar axion fluxes at Earth obtained after integrating over the AGSS09 solar model [<a href="https://iopscience.iop.org/article/10.1088/0004-637X/705/2/L123">Serenelli et al. 2009</a>, <a href="https://link.springer.com/article/10.1007/s10509-009-0174-8">Serenelli 2010</a>] is given by:
@@ -202,7 +198,8 @@ where the axion parameters are shown in the following Table:
 
 
 <details  id="sol-prim">
-  <summary><h2>Primakoff</h2></summary>
+  <!-- <summary><h2>Primakoff</h2></summary> -->
+  <summary><span style="font-size:1.5em;color:#228B22;">Primakoff</span></summary>
 
 <img align="right" width="500" src="plots/plots_png/Primakoff_SolarAxion_flux_plot.png">
 
@@ -227,7 +224,8 @@ where the axion parameters are shown in the following Table:
 
 
 <details  id="sol-brem">
-  <summary><h2>Bremsstrahlung</h2></summary>
+  <!-- <summary><h2>Bremsstrahlung</h2></summary> -->
+  <summary><span style="font-size:1.5em;color:#228B22;">Bremsstrahlung</span></summary>
 
 
 <img align="right" width="500" src="plots/plots_png/Bremsstrahlung_SolarAxion_flux_plot.png"> 
@@ -254,7 +252,8 @@ where the axion parameters are shown in the following Table:
 
 
 <details  id="sol-com">
-  <summary><h2> Compton</h2></summary>
+  <!-- <summary><h2> Compton</h2></summary> -->
+  <summary><span style="font-size:1.5em;color:#228B22;">Compton</span></summary>
 
 <img align="right" width="500" src="plots/plots_png/Compton_SolarAxion_flux_plot.png">
 
@@ -283,7 +282,8 @@ where the axion parameters are shown in the following Table:
 <hr>
 
 <details open id="MS-axions">
-<summary><h1>Main Sequence stars axions</h1></summary>
+<!-- <summary><h1>Main Sequence stars axions</h1></summary> -->
+<summary><span style="font-size:2em;font-weight:bold;color:#228B22;">Main Sequence stars axions</span></summary>
 
 <p>
   The quasi-thermal Main Sequence stars axion spectrum at the source can be parametrized by 
@@ -356,7 +356,8 @@ where the axion parameters are now a function of the stellar mass and are given 
 <hr>
 
 <details  id="ms-prim">
-  <summary><h2>Primakoff</h2></summary>
+  <!-- <summary><h2>Primakoff</h2></summary> -->
+<summary><span style="font-size:1.5em;color:#228B22;">Primakoff</span></summary>
 
 <img align="right" width="500" src="plots/plots_png/Primakoff_MSAxion_flux_plot.png">
 
@@ -376,7 +377,8 @@ where the axion parameters are now a function of the stellar mass and are given 
 <hr>
 
 <details  id="ms-brem">
-  <summary><h2>Bremsstrahlung</h2></summary>
+  <!-- <summary><h2>Bremsstrahlung</h2></summary> -->
+<summary><span style="font-size:1.5em;color:#228B22;">Bremsstrahlung</span></summary>
 
 <img align="right" width="500" src="plots/plots_png/Bremsstrahlung_MSAxion_flux_plot.png">
 
@@ -396,7 +398,8 @@ where the axion parameters are now a function of the stellar mass and are given 
 <hr>
 
 <details   id="ms-com">
-  <summary><h2>Compton</h2></summary>
+  <!-- <summary><h2>Compton</h2></summary> -->
+<summary><span style="font-size:1.5em;color:#228B22;">Compton</span></summary>
 
 <img align="right" width="500" src="plots/plots_png/Compton_MSAxion_flux_plot.png">
 
@@ -420,7 +423,8 @@ where the axion parameters are now a function of the stellar mass and are given 
 
 
 <details open id="rg-axions">
-<summary><h1>Red Giants axions</h1></summary>
+<!-- <summary><h1>Red Giants axions</h1></summary> -->
+<summary><span style="font-size:2em;font-weight:bold;color:#228B22;">Red Giants axions</span></summary>
 
 <p>
   Red Giants axions are mainly produced via their coupling to electrons, with the electron-ion bremsstrahlung process 
@@ -461,7 +465,9 @@ $$
 <hr>
 
 <details  id="rg-brem">
-  <summary><h2>Electron-ion bremsstrahlung</h2></summary>
+  <!-- <summary><h2>Electron-ion bremsstrahlung</h2></summary> -->
+<!-- <summary><span style="font-size:2em;font-weight:bold;color:#228B22;">Red Giants axions</span></summary> -->
+<summary><span style="font-size:1.5em;color:#228B22;">Electron-ion bremsstrahlung</span></summary>
 
 <img align="right" width="500" src="plots/plots_png/RGAxion_flux_plot.png">
 
@@ -486,7 +492,9 @@ $$
 
 
 <details open id="HB-axions">
-<summary><h1>Horizontal Branch stars axions</h1></summary>
+<!-- <summary><h1>Horizontal Branch stars axions</h1></summary> -->
+<summary><span style="font-size:2em;font-weight:bold;color:#228B22;">Horizontal Branch stars axions</span></summary>
+<!-- <summary><span style="font-size:2em;color:#228B22;">Electron-ion bremsstrahlung</span></summary> -->
 
 <p>
   The main production channel for axions interacting with photons in horizontal branch (HB) stars is the Primakoff effect.
@@ -520,7 +528,9 @@ $$
 <hr>
 
 <details  id="hb-prim">
-  <summary><h2>Primakoff</h2></summary>
+  <!-- <summary><h2>Primakoff</h2></summary> -->
+<!-- <summary><span style="font-size:2em;font-weight:bold;color:#228B22;">Horizontal Branch stars axions</span></summary> -->
+<summary><span style="font-size:1.5em;color:#228B22;">Primakoff</span></summary>
 
 <img align="right" width="500" src="plots/plots_png/HBAxion_flux_plot.png">
 
@@ -544,13 +554,17 @@ $$
 
 
 <details open id="ARG-axions">
-<summary><h1>Asymptotic Red Giants axions</h1></summary>
+<!-- <summary><h1>Asymptotic Red Giants axions</h1></summary> -->
+<summary><span style="font-size:2em;font-weight:bold;color:#228B22;">Asymptotic Red Giants axions</span></summary>
+<!-- <summary><span style="font-size:2em;color:#228B22;">Primakoff</span></summary> -->
 
 </details>
 <hr>
 
 <details open id="WD-axions">
-<summary><h1>White Dwarfs axions</h1></summary>
+<!-- <summary><h1>White Dwarfs axions</h1></summary> -->
+<summary><span style="font-size:2em;font-weight:bold;color:#228B22;">White Dwarfs axions</span></summary>
+<!-- <summary><span style="font-size:2em;color:#228B22;">Primakoff</span></summary> -->
 
 <p>
   White Dwarfs axions are mainly produced via their coupling to electrons, with the electron-ion bremsstrahlung process \(e + Ze \to e + Ze + a\) as the main production channel involving mainly carbon and oxygen. 
@@ -584,7 +598,9 @@ $$
 <hr>
 
 <details  id="wd-brem">
-  <summary><h2>Electron-ion bremsstrahlung</h2></summary>
+  <!-- <summary><h2>Electron-ion bremsstrahlung</h2></summary> -->
+<!-- <summary><span style="font-size:2em;font-weight:bold;color:#228B22;">White Dwarfs axions</span></summary> -->
+<summary><span style="font-size:1.5em;color:#228B22;">Electron-ion bremsstrahlung</span></summary>
 
 <img align="right" width="500" src="plots/plots_png/WDAxion_flux_plot.png">
 
@@ -608,7 +624,9 @@ $$
 
 
 <details open id="RSG-axions">
-<summary><h1>Red Supergiants axions</h1></summary>
+<!-- <summary><h1>Red Supergiants axions</h1></summary> -->
+<summary><span style="font-size:2em;font-weight:bold;color:#228B22;">Red Supergiants axions</span></summary>
+<!-- <summary><span style="font-size:2em;color:#228B22;">Electron-ion bremsstrahlung</span></summary> -->
 
 <p>
 ALP production in massive stars at supergiant stages is dominated by their couplings to photons and electrons. 
@@ -696,7 +714,9 @@ and
 <hr>
 
 <details  id="rsg-prim">
-<summary><h2>Primakoff</h2></summary>
+<!-- <summary><h2>Primakoff</h2></summary> -->
+<!-- <summary><span style="font-size:2em;font-weight:bold;color:#228B22;">Red Supergiants axions</span></summary> -->
+<summary><span style="font-size:1.5em;color:#228B22;">Primakoff</span></summary>
 
 <img align="right" width="500" src="plots/plots_png/Primakoff_RSGAxion_flux_plot.png">
 
@@ -715,7 +735,9 @@ and
 <hr>
 
 <details  id="rsg-brem">
-<summary><h2>Bremsstrahlung</h2></summary>
+<!-- <summary><h2>Bremsstrahlung</h2></summary> -->
+<!-- <summary><span style="font-size:2em;font-weight:bold;color:#228B22;">Red Supergiants axions</span></summary> -->
+<summary><span style="font-size:1.5em;color:#228B22;">Bremsstrahlung</span></summary>
 
 <img align="right" width="500" src="plots/plots_png/Bremsstrahlung_RSGAxion_flux_plot.png">
 
@@ -734,7 +756,9 @@ and
 <hr>
 
 <details  id="rsg-com">
-<summary><h2>Compton</h2></summary>
+<!-- <summary><h2>Compton</h2></summary> -->
+<!-- <summary><span style="font-size:2em;font-weight:bold;color:#228B22;">Red Supergiants axions</span></summary> -->
+<summary><span style="font-size:1.5em;color:#228B22;">Compton</span></summary>
 
 <img align="right" width="500" src="plots/plots_png/Compton_RSGAxion_flux_plot.png">
 
@@ -757,7 +781,9 @@ and
 
 
 <details open id="CCSN-axions"> 
-<summary><h1>Core-collapse Supernovae axions</h1></summary>
+<!-- <summary><h1>Core-collapse Supernovae axions</h1></summary> -->
+<summary><span style="font-size:2em;font-weight:bold;color:#228B22;">Core-collapse Supernovae axions</span></summary>
+<!-- <summary><span style="font-size:2em;color:#228B22;">Compton</span></summary> -->
 
 <p>
   Axion emission from the inner regions of the SN core is expected to be strongly enhanced by the extreme temperature and density conditions,
@@ -886,7 +912,9 @@ Fitting parameters for different times after the SN core bounce are:
 <hr>
 
 <details  id="ccsn-brem">
-<summary><h2>NN Bremsstrahlung</h2></summary>
+<!-- <summary><h2>NN Bremsstrahlung</h2></summary> -->
+<!-- <summary><span style="font-size:2em;font-weight:bold;color:#228B22;">Core-collapse Supernovae axions</span></summary> -->
+<summary><span style="font-size:1.5em;color:#228B22;">NN Bremsstrahlung</span></summary>
 
 <img align="right" width="500" src="plots/plots_png/Bremsstrahlung_SNAxion_flux_plot.png">
 
@@ -906,7 +934,9 @@ Fitting parameters for different times after the SN core bounce are:
 <hr>
 
 <details  id="ccsn-pi">
-<summary><h2>Pion conversion</h2></summary>
+<!-- <summary><h2>Pion conversion</h2></summary> -->
+<!-- <summary><span style="font-size:2em;font-weight:bold;color:#228B22;">Core-collapse Supernovae axions</span></summary> -->
+<summary><span style="font-size:1.5em;color:#228B22;">Pion conversion</span></summary>
 
 <img align="right" width="500" src="plots/plots_png/PionConversion_SNAxion_flux_plot.png">
 
@@ -930,13 +960,17 @@ Fitting parameters for different times after the SN core bounce are:
 
 
 <details open id="NS-axions">
-<summary><h1>Neutron stars axions</h1></summary>
+<!-- <summary><h1>Neutron stars axions</h1></summary> -->
+<summary><span style="font-size:2em;font-weight:bold;color:#228B22;">Neutron stars axions</span></summary>
+<!-- <summary><span style="font-size:2em;color:#228B22;">Pion conversion</span></summary> -->
 </details>
 <hr>
 
 
 <details open id="BNSM-axions">
-<summary><h1>Binary neutron star mergers axions</h1></summary>
+<!-- <summary><h1>Binary neutron star mergers axions</h1></summary> -->
+<summary><span style="font-size:2em;font-weight:bold;color:#228B22;">Binary neutron star mergers axions</span></summary>
+<!-- <summary><span style="font-size:2em;color:#228B22;">Pion conversion</span></summary> -->
 
 </details>
 <hr>

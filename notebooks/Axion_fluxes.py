@@ -59,8 +59,8 @@ def plot_SolarAxion_flux(proc: str, Eamin: float, Eamax: float):
     # Plot the axion flux
     plt.plot(E_values, flux1, color='black')
     # Add labels and legend
-    plt.xlabel(r'$E_a ({\rm keV})$', fontsize=30)
-    plt.ylabel(r'$\frac{d\Phi_{a}}{d E_a}(\times10^{6}\,{\rm keV}^{-1}{\rm s}^{-1}{\rm cm}^{-2})$', fontsize=30)
+    plt.xlabel(r'$E_a\,[{\rm keV}]$', fontsize=30)
+    plt.ylabel(r'$\frac{d\Phi_{a}}{d E_a}\,[10^{6}\,{\rm keV}^{-1}{\rm s}^{-1}{\rm cm}^{-2}]$', fontsize=30)
     plt.grid(True) 
     # Save the plot as PDF
     plt.savefig(plotfolder + proc + '_SolarAxion_flux_plot.pdf', bbox_inches='tight')
@@ -114,8 +114,8 @@ def plot_MainSequenceAxion_flux(proc: str, Eamin: float, Eamax: float):
     fl1 = plt.plot(E_values, flux1*10**(-int(np.log10(maxflux))), color='black', ls='-')
     fl2 = plt.plot(E_values, flux2*10**(-int(np.log10(maxflux))), color='black', ls='--')
     # Add labels and legend
-    plt.xlabel(r'$E_a ({\rm keV})$', fontsize=30)
-    plt.ylabel(r'$\frac{d\Phi_{a}}{d E_a}(\times10^{' + str(int(np.log10(maxflux))) + r'}\,{\rm keV}^{-1}{\rm s}^{-1}{\rm cm}^{-2})$', fontsize=30)
+    plt.xlabel(r'$E_a\,[{\rm keV}]$', fontsize=30)
+    plt.ylabel(r'$\frac{d\Phi_{a}}{d E_a}\,[10^{' + str(int(np.log10(maxflux))) + r'}\,{\rm keV}^{-1}{\rm s}^{-1}{\rm cm}^{-2}]$', fontsize=30)
     plt.grid(True) 
     h = [fl1[0], fl2[0]]
     # r'$e^-$ at rest']
@@ -152,8 +152,8 @@ def plot_RedGiantAxion_flux(Eamin: float, Eamax: float):
     # Plot the axion flux
     fl1 = plt.plot(E_values, flux1*10**(-int(np.log10(maxflux))), color='black')
     # Add labels and legend
-    plt.xlabel(r'$E_a ({\rm keV})$', fontsize=30)
-    plt.ylabel(r'$\frac{d N_{a}}{d E_a\,d t}(\times10^{' + str(int(np.log10(maxflux))) + r'}\,{\rm keV}^{-1}{\rm s}^{-1})$', fontsize=30)
+    plt.xlabel(r'$E_a\,[{\rm keV}]$', fontsize=30)
+    plt.ylabel(r'$\frac{d N_{a}}{d E_a\,d t}\,[10^{' + str(int(np.log10(maxflux))) + r'}\,{\rm keV}^{-1}{\rm s}^{-1}]$', fontsize=30)
     plt.grid(True) 
     # Save the plot as PDF
     plt.savefig(plotfolder + 'RGAxion_flux_plot.pdf', bbox_inches='tight')
@@ -184,8 +184,8 @@ def plot_HorizontalBranchAxion_flux(Eamin: float, Eamax: float):
     # Plot the axion flux
     fl1 = plt.plot(E_values, flux1*10**(-int(np.log10(maxflux))), color='black')
     # Add labels and legend
-    plt.xlabel(r'$E_a ({\rm keV})$', fontsize=30)
-    plt.ylabel(r'$\frac{d N_{a}}{d E_a\,d t}(\times10^{' + str(int(np.log10(maxflux))) + r'}\,{\rm keV}^{-1}{\rm s}^{-1})$', fontsize=30)
+    plt.xlabel(r'$E_a\,[{\rm keV}]$', fontsize=30)
+    plt.ylabel(r'$\frac{d N_{a}}{d E_a\,d t}\,[10^{' + str(int(np.log10(maxflux))) + r'}\,{\rm keV}^{-1}{\rm s}^{-1}]$', fontsize=30)
     plt.grid(True) 
     # Save the plot as PDF
     plt.savefig(plotfolder + 'HBAxion_flux_plot.pdf', bbox_inches='tight')
@@ -226,8 +226,8 @@ def plot_WhiteDwarfAxion_flux(Eamin: float, Eamax: float):
     # Plot the axion flux
     fl1 = plt.plot(E_values, flux1*10**(-int(np.log10(maxflux))), color='black')
     # Add labels and legend
-    plt.xlabel(r'$E_a ({\rm keV})$', fontsize=30)
-    plt.ylabel(r'$\frac{d N_{a}}{d E_a\,d t}(\times10^{' + str(int(np.log10(maxflux))) + r'}\,{\rm keV}^{-1}{\rm s}^{-1})$', fontsize=30)
+    plt.xlabel(r'$E_a\,[{\rm keV}]$', fontsize=30)
+    plt.ylabel(r'$\frac{d N_{a}}{d E_a\,d t}\,[10^{' + str(int(np.log10(maxflux))) + r'}\,{\rm keV}^{-1}{\rm s}^{-1}]$', fontsize=30)
     plt.grid(True) 
     # Save the plot as PDF
     plt.savefig(plotfolder + 'WDAxion_flux_plot.pdf', bbox_inches='tight')
@@ -300,8 +300,8 @@ def plot_NNbremsstrahlungSNAxion_flux(Eamin: float, Eamax: float):
     fl2 = plt.plot(E_values, flux2*10**(-int(np.log10(maxflux))), color='black', ls='--')
     fl3 = plt.plot(E_values, flux3*10**(-int(np.log10(maxflux))), color='black', ls='-.')
     # Add labels and legend
-    plt.xlabel(r'$E_a ({\rm MeV})$', fontsize=30)
-    plt.ylabel(r'$\frac{d N_{a}}{d E_a\,d t}(\times10^{' + str(int(np.log10(maxflux))) + r'}\,{\rm MeV}^{-1}{\rm s}^{-1})$', fontsize=30)
+    plt.xlabel(r'$E_a\,[{\rm MeV}]$', fontsize=30)
+    plt.ylabel(r'$\frac{d N_{a}}{d E_a\,d t}\,[10^{' + str(int(np.log10(maxflux))) + r'}\,{\rm MeV}^{-1}{\rm s}^{-1}]$', fontsize=30)
     plt.grid(True) 
     h = [fl1[0], fl2[0], fl3[0]]
     # r'$e^-$ at rest']
@@ -372,8 +372,8 @@ def plot_pionConversionSNAxion_flux(Eamin: float, Eamax: float):
     fl2 = plt.plot(E_values, flux2*10**(-int(np.log10(maxflux))), color='black', ls='--')
     fl3 = plt.plot(E_values, flux3*10**(-int(np.log10(maxflux))), color='black', ls='-.')
     # Add labels and legend
-    plt.xlabel(r'$E_a ({\rm MeV})$', fontsize=30)
-    plt.ylabel(r'$\frac{d N_{a}}{d E_a\,d t}(\times10^{' + str(int(np.log10(maxflux))) + r'}\,{\rm MeV}^{-1}{\rm s}^{-1})$', fontsize=30)
+    plt.xlabel(r'$E_a\,[{\rm MeV}]$', fontsize=30)
+    plt.ylabel(r'$\frac{d N_{a}}{d E_a\,d t}\,[10^{' + str(int(np.log10(maxflux))) + r'}\,{\rm MeV}^{-1}{\rm s}^{-1}]$', fontsize=30)
     plt.grid(True) 
     h = [fl1[0], fl2[0], fl3[0]]
     # r'$e^-$ at rest']
@@ -508,8 +508,8 @@ def plot_RedSupergiantsAxion_flux(proc: str, Eamin: float, Eamax: float):
     fl8 = plt.plot(E_values, flux8*10**(-int(np.log10(maxflux))), color='red', ls=':')
 
     # Add labels and legend
-    plt.xlabel(r'$E_a ({\rm keV})$', fontsize=30)
-    plt.ylabel(r'$\frac{d\Phi_{a}}{d E_a}(\times10^{' + str(int(np.log10(maxflux))) + r'}\,{\rm keV}^{-1}{\rm s}^{-1}{\rm cm}^{-2})$', fontsize=30)
+    plt.xlabel(r'$E_a\,[{\rm keV}]$', fontsize=30)
+    plt.ylabel(r'$\frac{d\Phi_{a}}{d E_a}\,[10^{' + str(int(np.log10(maxflux))) + r'}\,{\rm keV}^{-1}{\rm s}^{-1}{\rm cm}^{-2}]$', fontsize=30)
     plt.grid(True) 
     h = [fl1[0], fl2[0], fl3[0], fl4[0], fl5[0], fl6[0], fl7[0], fl8[0]]
     # r'$e^-$ at rest']
