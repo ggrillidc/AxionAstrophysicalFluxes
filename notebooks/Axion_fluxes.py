@@ -300,8 +300,8 @@ def plot_NNbremsstrahlungSNAxion_flux(Eamin: float, Eamax: float):
     fl2 = plt.plot(E_values, flux2*10**(-int(np.log10(maxflux))), color='black', ls='--')
     fl3 = plt.plot(E_values, flux3*10**(-int(np.log10(maxflux))), color='black', ls='-.')
     # Add labels and legend
-    plt.xlabel(r'$E_a ({\rm keV})$', fontsize=30)
-    plt.ylabel(r'$\frac{d N_{a}}{d E_a\,d t}(\times10^{' + str(int(np.log10(maxflux))) + r'}\,{\rm keV}^{-1}{\rm s}^{-1})$', fontsize=30)
+    plt.xlabel(r'$E_a ({\rm MeV})$', fontsize=30)
+    plt.ylabel(r'$\frac{d N_{a}}{d E_a\,d t}(\times10^{' + str(int(np.log10(maxflux))) + r'}\,{\rm MeV}^{-1}{\rm s}^{-1})$', fontsize=30)
     plt.grid(True) 
     h = [fl1[0], fl2[0], fl3[0]]
     # r'$e^-$ at rest']
@@ -372,8 +372,8 @@ def plot_pionConversionSNAxion_flux(Eamin: float, Eamax: float):
     fl2 = plt.plot(E_values, flux2*10**(-int(np.log10(maxflux))), color='black', ls='--')
     fl3 = plt.plot(E_values, flux3*10**(-int(np.log10(maxflux))), color='black', ls='-.')
     # Add labels and legend
-    plt.xlabel(r'$E_a ({\rm keV})$', fontsize=30)
-    plt.ylabel(r'$\frac{d N_{a}}{d E_a\,d t}(\times10^{' + str(int(np.log10(maxflux))) + r'}\,{\rm keV}^{-1}{\rm s}^{-1})$', fontsize=30)
+    plt.xlabel(r'$E_a ({\rm MeV})$', fontsize=30)
+    plt.ylabel(r'$\frac{d N_{a}}{d E_a\,d t}(\times10^{' + str(int(np.log10(maxflux))) + r'}\,{\rm MeV}^{-1}{\rm s}^{-1})$', fontsize=30)
     plt.grid(True) 
     h = [fl1[0], fl2[0], fl3[0]]
     # r'$e^-$ at rest']
