@@ -506,7 +506,7 @@ def plot_RedSupergiantsAxion_flux(proc: str, Eamin: float, Eamax: float):
     fl6 = plt.plot(E_values, flux6*10**(-int(np.log10(maxflux))), color='red', ls='--')
     fl7 = plt.plot(E_values, flux7*10**(-int(np.log10(maxflux))), color='red', ls='-.')
     fl8 = plt.plot(E_values, flux8*10**(-int(np.log10(maxflux))), color='red', ls=':')
-    # Customize the range of the
+
     # Add labels and legend
     plt.xlabel(r'$E_a ({\rm keV})$', fontsize=30)
     plt.ylabel(r'$\frac{d\Phi_{a}}{d E_a}(\times10^{' + str(int(np.log10(maxflux))) + r'}\,{\rm keV}^{-1}{\rm s}^{-1}{\rm cm}^{-2})$', fontsize=30)

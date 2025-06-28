@@ -3,17 +3,144 @@ layout: default
 use_math: true
 ---
 
-
-This webpage hosts data files and python notebooks for axion astrophysical fluxes. 
-
-Please, email me [giovanni.grilli@lngs.infn.it] for questions, comments or complaints.
-
-# Solar Axions
-
-<!-- Solar model: AGSS09 [[Serenelli et al. 2009](https://iopscience.iop.org/article/10.1088/0004-637X/705/2/L123), [Serenelli 2010](https://link.springer.com/article/10.1007/s10509-009-0174-8)]-->
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
 
 
-An accurate fit of solar axion fluxes at Earth obtained after integrating over the AGSS09 solar model [[Serenelli et al. 2009](https://iopscience.iop.org/article/10.1088/0004-637X/705/2/L123), [Serenelli 2010](https://link.springer.com/article/10.1007/s10509-009-0174-8)] is given by:
+
+<style>
+  .toc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2em;
+    max-width: 900px;
+    margin: auto;
+  }
+
+  /* .toc-grid ul {
+    list-style: none;
+    padding-left: 0;
+  } */
+
+  .toc-grid li {
+    margin-bottom: 0.5em;
+  }
+
+  .toc-grid li ul {
+    margin-left: 1.2em;
+    margin-top: 0.3em;
+  }
+</style>
+
+<h1>Contents</h1>
+<div class="toc-grid">
+  <ul>
+    <li><a href="#solar-axions">Solar Axions</a>
+      <ul>
+        <li><a href="#sol-prim">Primakoff</a></li>
+        <li><a href="#sol-brem">Bremsstrahlung</a></li>
+        <li><a href="#sol-com">Compton</a></li>
+      </ul>
+    </li>
+    <li><a href="#MS-axions">Main Sequence Axions</a>
+      <ul>
+        <li><a href="#ms-prim">Primakoff</a></li>
+        <li><a href="#ms-brem">Bremsstrahlung</a></li>
+        <li><a href="#ms-com">Compton</a></li>
+      </ul>
+    </li>
+    <li><a href="#rg-axions">Red Giants Axions</a>
+      <ul>
+        <li><a href="#rg-brem">Electron-ion Bremsstrahlung</a></li>
+      </ul>
+    </li>
+    <li><a href="#HB-axions">Horizontal Branch Axions</a>
+      <ul>
+        <li><a href="#hb-prim">Primakoff</a></li>
+      </ul>
+    </li>
+    <li><a href="#ARG-axions">Asymptotic Red Giants Axions</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#WD-axions">White Dwarfs Axions</a>
+      <ul>
+        <li><a href="#wd-brem">Electron-ion Bremsstrahlung</a></li>
+      </ul>
+    </li>
+    <li><a href="#RSG-axions">Red Supergiants Axions</a>
+      <ul>
+        <li><a href="#rsg-prim">Primakoff</a></li>
+        <li><a href="#rsg-brem">Bremsstrahlung</a></li>
+        <li><a href="#rsg-com">Compton</a></li>
+      </ul>
+    </li>
+    <li><a href="#CCSN-axions">Core-collapse SN Axions</a>
+      <ul>
+        <li><a href="#ccsn-brem">NN Bremsstrahlung</a></li>
+        <li><a href="#ccsn-pi">Pion conversion</a></li>
+      </ul>
+    </li>
+    <li><a href="#NS-axions">Neutron Star Axions</a></li>
+    <li><a href="#BNSM-axions">Binary neutron star merger Axions</a></li>
+  </ul>
+</div>
+
+
+
+<!-- 
+<h2>Contents</h2>
+<ul>
+  <li><a href="#solar-axions">Solar Axions</a></li>
+    <ul>
+      <li><a href="#sol-prim">Primakoff</a></li>
+      <li><a href="#sol-brem">Bremsstrahlung</a></li>
+      <li><a href="#sol-com">Compton</a></li>
+    </ul>
+  <li><a href="#MS-axions">Main Sequence Axions</a></li>
+    <ul>
+      <li><a href="#ms-prim">Primakoff</a></li>
+      <li><a href="#ms-brem">Bremsstrahlung</a></li>
+      <li><a href="#ms-com">Compton</a></li>
+    </ul>
+  <li><a href="#RG-axions">Red Giants Axions</a></li>
+    <ul>
+      <li><a href="#rg-brem">Electron-ion Bremsstrahlung</a></li>
+    </ul>
+  <li><a href="#HB-axions">Horizontal Branch Axions</a></li>
+    <ul>
+      <li><a href="#hb-prim">Primaoff</a></li>
+    </ul>
+  <li><a href="#ARG-axions">Asymptotic Red Giants Axions</a></li>
+  <li><a href="#WD-axions">White Dwarfs Axions</a></li>
+    <ul>
+      <li><a href="#wd-brem">Electron-ion Bremsstrahlung</a></li>
+    </ul>
+  <li><a href="#RSG-axions">Red Supergiants Axions</a></li>
+    <ul>
+      <li><a href="#rsg-prim">Primakoff</a></li>
+      <li><a href="#rsg-brem">Bremsstrahlung</a></li>
+      <li><a href="#rsg-com">Compton</a></li>
+    </ul>
+  <li><a href="#CCSN-axions">Core-collapse SN Axions</a></li>
+    <ul>
+      <li><a href="#ccsn-brem">NN Bremsstrahlung</a></li>
+      <li><a href="#ccsn-pi">\(\pi\)N Conversion</a></li>
+    </ul>
+  <li><a href="#NS-axions">Neutron Star Axions</a></li>
+  <li><a href="#BNSM-axions">Binary neutron star merger Axions</a></li>
+</ul> -->
+
+
+
+<details open id="solar-axions">
+<summary><h1>Solar Axions</h1></summary>
+
+
+An accurate fit of solar axion fluxes at Earth obtained after integrating over the AGSS09 solar model [<a href="https://iopscience.iop.org/article/10.1088/0004-637X/705/2/L123">Serenelli et al. 2009</a>, <a href="https://link.springer.com/article/10.1007/s10509-009-0174-8">Serenelli 2010</a>] is given by:
 
 $$
 \frac{d\Phi_a}{dE_a}= C_0 \left(\frac{g_{ax}}{g_{\mathrm{ref}}}\right)^2 \left(\frac{E}{E_0}\right)^\beta e^{-(1+\beta)\frac{E}{E_0}},
@@ -22,301 +149,506 @@ $$
 where the axion parameters are shown in the following Table:
 
 
-|                              | $$g_{\text{ref}}$$              | $$ C_0  (\text{keV}^{-1}~\text{s}^{-1}~\text{cm}^{-2})$$    | $$ E_0 (\text{keV})$$    | $$ \beta $$             |
-|------------------------------|----------------------------------|-------------------------------------------------------------|--------------------------|-------------------------|
-| Primakoff, $$x = \gamma $$     | $$ 10^{-12}~\text{GeV}^{-1} $$  | $$ (2.19 \pm 0.08)\,10^8 $$                           | $$ 4.17 \pm 0.02 $$      | $$ 2.531 \pm 0.008 $$   |
-| Bremsstrahlung, $$ x = e $$    | $$ 10^{-12} $$                  | $$ (3.847 \pm 0.007)\,10^{11} $$                      | $$ 1.63 \pm 0.01 $$      | $$ 0.8063 \pm 0.0003 $$ |
-| Compton, $$ x = e $$           | $$ 10^{-12} $$                  | $$ (8.8 \pm 0.1) \, 10^{11} $$                          | $$ 5.10 \pm 0.03 $$      | $$ 2.979 \pm 0.001 $$   |
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>$$g_{\text{ref}}$$</th>
+        <th>$$ C_0\, (\text{keV}^{-1}~\text{s}^{-1}~\text{cm}^{-2})$$</th>
+        <th>$$ E_0\, (\text{keV})$$</th>
+        <th>$$ \beta $$</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Primakoff, $$x = \gamma $$</td>
+        <td>$$ 10^{-12}~\text{GeV}^{-1} $$</td>
+        <td>$$ (2.19 \pm 0.08)\,10^8 $$</td>
+        <td>$$ 4.17 \pm 0.02 $$</td>
+        <td>$$ 2.531 \pm 0.008 $$</td>
+      </tr>
+      <tr>
+        <td>Bremsstrahlung, $$ x = e $$</td>
+        <td>$$ 10^{-12} $$</td>
+        <td>$$ (3.847 \pm 0.007)\,10^{11} $$</td>
+        <td>$$ 1.63 \pm 0.01 $$</td>
+        <td>$$ 0.8063 \pm 0.0003 $$</td>
+      </tr>
+      <tr>
+        <td>Compton, $$ x = e $$</td>
+        <td>$$ 10^{-12} $$</td>
+        <td>$$ (8.8 \pm 0.1) \, 10^{11} $$</td>
+        <td>$$ 5.10 \pm 0.03 $$</td>
+        <td>$$ 2.979 \pm 0.001 $$</td>
+      </tr>
+    </tbody>
+  </table>
 
-**Table:** Summary of the fitting parameters to reproduce the axion emission from the Sun via Primakoff (coupling to photons $$g_{a\gamma}$$), Bremsstrahlung, and Compton (coupling to electrons $$g_{ae}$$), see [[Hoof et al.](https://iopscience.iop.org/article/10.1088/1475-7516/2024/11/009), [Wu and Xu](https://iopscience.iop.org/article/10.1088/1475-7516/2021/09/006)] and the [GitHub code](https://github.com/pcarenza95/SolarAxionCode). The uncertainty on the fitting parameters includes the most recent solar models [[Magg et al. 2022](https://www.aanda.org/articles/aa/full_html/2022/05/aa42971-21/aa42971-21.html)].
+
+
+<p style="font-style: italic; font-size: 0.9em; margin-top: 0.5em;">
+    <strong>Table:</strong> Summary of the fitting parameters to reproduce the axion emission from the Sun via Primakoff (coupling to photons \(g_{a\gamma}\)), Bremsstrahlung, and Compton (coupling to electrons \(g_{ae}\)), see [<a href="https://iopscience.iop.org/article/10.1088/1475-7516/2024/11/009">Hoof et al.</a>, <a href="https://iopscience.iop.org/article/10.1088/1475-7516/2021/09/006">Wu and Xu</a>] and the <a href="https://github.com/pcarenza95/SolarAxionCode">GitHub code</a>. The uncertainty on the fitting parameters includes the most recent solar models [<a href="https://www.aanda.org/articles/aa/full_html/2022/05/aa42971-21/aa42971-21.html">Magg et al. 2022</a>].
+  </p>
+
+
+<h3>
+    <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/blob/main/notebooks/SolarAxions.ipynb" target="_blank" rel="noopener noreferrer">
+      View Notebook (.ipynb)
+    </a>
+  </h3>
+
+<hr>
 
 
 
-
-
-### [View Notebook (.ipynb)](https://github.com/ggrillidc/AxionAstrophysicalFluxes/blob/main/notebooks/SolarAxions.ipynb)
-
----
+<details  id="sol-prim">
+  <summary><h2>Primakoff</h2></summary>
 
 <img align="right" width="500" src="plots/plots_png/Primakoff_SolarAxion_flux_plot.png">
 
-## Primakoff
+
+<h3>&nbsp;</h3>
+\(g_{a\gamma}=10^{-12}\,\text{GeV}^{-1}\)
+
+<p>
+  Plot (
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Primakoff_SolarAxion_flux_plot.pdf" target="_blank" rel="noopener noreferrer">pdf</a>,
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Primakoff_SolarAxion_flux_plot.png" target="_blank" rel="noopener noreferrer">png</a>
+  )
+</p>
+
+<h3>&nbsp;</h3>
+<h3>&nbsp;</h3>
+<h3>&nbsp;</h3>
 
 
-$$g_{a\gamma}=10^{-12}\,\text{GeV}^{-1}$$
-
-Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Primakoff_SolarAxion_flux_plot.pdf), [png](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Primakoff_SolarAxion_flux_plot.png))
-### &nbsp;
-### &nbsp;
-### &nbsp;
-### &nbsp;
+</details>
+<hr>
 
 
-
----
-
-<img align="right" width="500" src="plots/plots_png/Bremsstrahlung_SolarAxion_flux_plot.png">
-
-## Bremsstrahlung
-
-$$g_{ae}=10^{-12}$$
-
-Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Bremsstrahlung_SolarAxion_flux_plot.pdf), [png](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Bremsstrahlung_SolarAxion_flux_plot.png))
+<details  id="sol-brem">
+  <summary><h2>Bremsstrahlung</h2></summary>
 
 
+<img align="right" width="500" src="plots/plots_png/Bremsstrahlung_SolarAxion_flux_plot.png"> 
 
-### &nbsp;
-### &nbsp;
-### &nbsp;
-### &nbsp;
+<h3>&nbsp;</h3>
+
+\(g_{ae}=10^{-12}\)
+
+<p>
+  Plot (
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Bremsstrahlung_SolarAxion_flux_plot.pdf" target="_blank" rel="noopener noreferrer">pdf</a>,
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Bremsstrahlung_SolarAxion_flux_plot.png" target="_blank" rel="noopener noreferrer">png</a>
+  )
+</p>
 
 
+<h3>&nbsp;</h3>
+<h3>&nbsp;</h3>
+<h3>&nbsp;</h3>
 
----
+
+</details>
+<hr>
+
+
+<details  id="sol-com">
+  <summary><h2> Compton</h2></summary>
 
 <img align="right" width="500" src="plots/plots_png/Compton_SolarAxion_flux_plot.png">
 
-## Compton
-
-$$g_{ae}=10^{-12}$$
-
-Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Compton_SolarAxion_flux_plot.pdf), [png](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Compton_SolarAxion_flux_plot.png))
+<h3>&nbsp;</h3>
+\(g_{ae}=10^{-12}\)
 
 
 
-### &nbsp;
-### &nbsp;
-### &nbsp;
-### &nbsp;
+<p>
+  Plot (
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Compton_SolarAxion_flux_plot.pdf" target="_blank" rel="noopener noreferrer">pdf</a>,
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Compton_SolarAxion_flux_plot.png" target="_blank" rel="noopener noreferrer">png</a>
+  )
+</p>
 
 
+<h3>&nbsp;</h3>
+<h3>&nbsp;</h3>
+<h3>&nbsp;</h3>
 
----
 
-# Main Sequence stars axions
+</details>
+<hr>
 
-The quasi-thermal Main Sequence stars axion spectrum at the source can be parametrized by 
+</details>
+<hr>
 
+<details open id="MS-axions">
+<summary><h1>Main Sequence stars axions</h1></summary>
+
+<p>
+  The quasi-thermal Main Sequence stars axion spectrum at the source can be parametrized by 
+</p>
+
+<p>
 $$
-\frac{d\Phi_a}{dE_a}= C_0 \left(\frac{g_{ax}}{g_{\mathrm{ref}}}\right)^2 \left(\frac{E}{E_0}\right)^\beta e^{-(1+\beta)\frac{E}{E_0}}
+\frac{d\Phi_a}{dE_a}= C_0 \left(\frac{g_{ax}}{g_{\mathrm{ref}}}\right)^2 
+\left(\frac{E}{E_0}\right)^\beta e^{-(1+\beta)\frac{E}{E_0}}
 $$
+</p>
 
-where the axion parameters are now a function of the stellar mass and are given in the following Table:
+<p>
+where the axion parameters are now a function of the stellar mass and are given in the following table:
+</p>
 
-|  | $$g_{a x}$$ | $$C_{0} (10^{40}\,\text{keV}^{-1}\,\text{s}^{-1}\,\text{cm}^{-2})$$ | $$E_{0} (\text{keV})$$ | $$\beta$$ |
-|---|---|---|---|---|
-| Primakoff $$x=\gamma$$ | $$10^{-12}\,\text{GeV}^{-1}$$ | $$\begin{cases} -0.140+0.053\,M^{-0.347}e^{M^{0.379}} & \text{for } M<10\,M_{\odot} \\ -0.014+0.011\,M^{1.081} & \text{for } M\geq 10 \, M_{\odot} \end{cases}$$ | $$3.70+1.13\,M^{0.355}$$ | $$1.23+3.63\,e^{-M^{0.29}}$$ |
-| Bremsstrahlung $$x=e$$ | $$10^{-12}$$ | $$55.21+1.62\times10^{4}M^{-0.65}$$ | $$0.06+1.80\,M^{0.23}$$ | $$\begin{cases} 0.57 + 0.18 e^{-M^{1.09}} & \text{for } M\le 10 \, M_{\odot} \\ 0.48+0.05 \,M^{0.19} & \text{for } M\geq 10 \, M_{\odot} \end{cases}$$ |
-| Compton $$x=e$$ | $$10^{-12}$$ | $$0.14+1.01\,M^{1.49}$$ | $$0.025+6.014\,M^{0.225}$$ | $$2.99-0.56\,e^{-M^{0.09}}$$ |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>$$g_{a x}$$</th>
+      <th>$$C_{0} (10^{40}\,\text{keV}^{-1}\,\text{s}^{-1}\,\text{cm}^{-2})$$</th>
+      <th>$$E_{0} (\text{keV})$$</th>
+      <th>$$\beta$$</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Primakoff $$x=\gamma$$</td>
+      <td>$$10^{-12}\,\text{GeV}^{-1}$$</td>
+      <td>$$\begin{cases} 
+        -0.140+0.053\,M^{-0.347}e^{M^{0.379}} & \text{for } M<10\,M_{\odot} \\
+        -0.014+0.011\,M^{1.081} & \text{for } M\geq 10 \, M_{\odot}
+      \end{cases}$$</td>
+      <td>$$3.70+1.13\,M^{0.355}$$</td>
+      <td>$$1.23+3.63\,e^{-M^{0.29}}$$</td>
+    </tr>
+    <tr>
+      <td>Bremsstrahlung $$x=e$$</td>
+      <td>$$10^{-12}$$</td>
+      <td>$$55.21+1.62\times10^{4}M^{-0.65}$$</td>
+      <td>$$0.06+1.80\,M^{0.23}$$</td>
+      <td>$$\begin{cases}
+        0.57 + 0.18 e^{-M^{1.09}} & \text{for } M\le 10 \, M_{\odot} \\
+        0.48+0.05 \,M^{0.19} & \text{for } M\geq 10 \, M_{\odot}
+      \end{cases}$$</td>
+    </tr>
+    <tr>
+      <td>Compton $$x=e$$</td>
+      <td>$$10^{-12}$$</td>
+      <td>$$0.14+1.01\,M^{1.49}$$</td>
+      <td>$$0.025+6.014\,M^{0.225}$$</td>
+      <td>$$2.99-0.56\,e^{-M^{0.09}}$$</td>
+    </tr>
+  </tbody>
+</table>
 
+<p style="font-style: italic; font-size: 0.9em; margin-top: 0.5em;">
+  <strong>Table:</strong> Summary of the fitting parameters to be used in the equation above, where \(M\) is in units of solar masses \({\rm M}_{\odot}\). These fits are valid in the range 
+  \(1-100~{\rm M}_{\odot}\) and can be obtained with this 
+  <a href="https://github.com/pcarenza95/MainSequence-Axion" target="_blank" rel="noopener noreferrer">GitHub code</a>.
+</p>
 
-**Table:** Summary of the fitting parameters to be used in the equation above, where $$M$$ is in units of solar masses $${\rm M}_{\odot}$$. These fits are valid in the range $$1-100~{\rm M}_{\odot}$$ and can be obtained by this [GitHub code](https://github.com/pcarenza95/MainSequence-Axion).
+<h3>
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/blob/main/notebooks/MainSequenceAxions.ipynb" target="_blank" rel="noopener noreferrer">
+    View Notebook (.ipynb)
+  </a>
+</h3>
 
+<hr>
 
-### [View Notebook (.ipynb)](https://github.com/ggrillidc/AxionAstrophysicalFluxes/blob/main/notebooks/MainSequenceAxions.ipynb)
-
----
+<details  id="ms-prim">
+  <summary><h2>Primakoff</h2></summary>
 
 <img align="right" width="500" src="plots/plots_png/Primakoff_MSAxion_flux_plot.png">
 
-## Primakoff
+<h3>&nbsp;</h3>
+\(g_{a\gamma}=10^{-12}\,\text{GeV}^{-1}\)
 
+<p>
+  Plot (
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Primakoff_MSAxion_flux_plot.pdf" target="_blank" rel="noopener noreferrer">pdf</a>,
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Primakoff_MSAxion_flux_plot.png" target="_blank" rel="noopener noreferrer">png</a>
+  )
+</p>
 
-$$g_{a\gamma}=10^{-12}\,\text{GeV}^{-1}$$
+<h3>&nbsp;</h3><h3>&nbsp;</h3><h3>&nbsp;</h3>
 
-Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Primakoff_MSAxion_flux_plot.pdf), [png](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Primakoff_MSAxion_flux_plot.png))
-### &nbsp;
-### &nbsp;
-### &nbsp;
-### &nbsp;
+</details>
+<hr>
 
-
-
----
+<details  id="ms-brem">
+  <summary><h2>Bremsstrahlung</h2></summary>
 
 <img align="right" width="500" src="plots/plots_png/Bremsstrahlung_MSAxion_flux_plot.png">
 
-## Bremsstrahlung
+<h3>&nbsp;</h3>
+\(g_{ae}=10^{-12}\)
 
-$$g_{ae}=10^{-12}$$
+<p>
+  Plot (
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Bremsstrahlung_MSAxion_flux_plot.pdf" target="_blank" rel="noopener noreferrer">pdf</a>,
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Bremsstrahlung_MSAxion_flux_plot.png" target="_blank" rel="noopener noreferrer">png</a>
+  )
+</p>
 
-Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Bremsstrahlung_MSAxion_flux_plot.pdf), [png](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Bremsstrahlung_MSAxion_flux_plot.png))
+<h3>&nbsp;</h3><h3>&nbsp;</h3><h3>&nbsp;</h3>
 
+</details>
+<hr>
 
-
-### &nbsp;
-### &nbsp;
-### &nbsp;
-### &nbsp;
-
-
-
----
+<details   id="ms-com">
+  <summary><h2>Compton</h2></summary>
 
 <img align="right" width="500" src="plots/plots_png/Compton_MSAxion_flux_plot.png">
 
-## Compton
+<h3>&nbsp;</h3>
+\(g_{ae}=10^{-12}\)
 
-$$g_{ae}=10^{-12}$$
+<p>
+  Plot (
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Compton_MSAxion_flux_plot.pdf" target="_blank" rel="noopener noreferrer">pdf</a>,
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Compton_MSAxion_flux_plot.png" target="_blank" rel="noopener noreferrer">png</a>
+  )
+</p>
 
-Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Compton_MSAxion_flux_plot.pdf), [png](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Compton_MSAxion_flux_plot.png))
+<h3>&nbsp;</h3><h3>&nbsp;</h3><h3>&nbsp;</h3>
+
+</details>
+<hr>
+
+</details>
+<hr>
 
 
+<details open id="rg-axions">
+<summary><h1>Red Giants axions</h1></summary>
 
-### &nbsp;
-### &nbsp;
-### &nbsp;
-### &nbsp;
+<p>
+  Red Giants axions are mainly produced via their coupling to electrons, with the electron-ion bremsstrahlung process 
+  $$e + Ze \to e + Ze + a$$ 
+  as the main production channel. This emission rate is studied in detail in 
+  [<a href="https://www.aanda.org/articles/aa/full_html/2022/05/aa42971-21/aa42971-21.html" target="_blank" rel="noopener noreferrer">Carenza and Lucente 2022</a>, 
+  <a href="https://arxiv.org/abs/2503.15630" target="_blank" rel="noopener noreferrer">Fiorillo et al.</a>].
+</p>
 
+<p>
+  The Red Giant axion emission spectrum is given by
+</p>
 
----
-
-# Red Giants axions
-
-
-Red Giants axions are mainly produced via their coupling to electrons, with the electron-ion bremsstrahlung process $$e + Ze \to e + Ze + a$$ as the main production channel. This emission rate is studied in detail in Refs. [[Carenza and Lucente 2022](https://www.aanda.org/articles/aa/full_html/2022/05/aa42971-21/aa42971-21.html), [Fiorillo et al.](https://arxiv.org/abs/2503.15630)]. The Red Giant axion emission spectrum is given by
-
+<p>
 $$
-\frac{dN_a}{dE_a dt}= 10^{39}\,\mathrm{keV}^{-1}\,\mathrm{s}^{-1}\left(\frac{g_{ae}}{10^{-13}}\right)^2\,C_0 \left(\frac{E}{E_0}\right)^\beta e^{-(1+\beta)\frac{E}{E_0}},
+\frac{dN_a}{dE_a dt}= 10^{39}\,\mathrm{keV}^{-1}\,\mathrm{s}^{-1}
+\left(\frac{g_{ae}}{10^{-13}}\right)^2\,
+C_0 \left(\frac{E}{E_0}\right)^\beta e^{-(1+\beta)\frac{E}{E_0}},
 $$
+</p>
 
-with 
+<p>
+  with
+</p>
 
+<p>
 $$
 C_0=3.92\qquad E_0=19.63\,\,\mathrm{keV}\qquad \beta=1.25\,.
 $$
+</p>
 
+<h3>
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/blob/main/notebooks/RedGiantAxions.ipynb" target="_blank" rel="noopener noreferrer">
+    View Notebook (.ipynb)
+  </a>
+</h3>
 
-### [View Notebook (.ipynb)](https://github.com/ggrillidc/AxionAstrophysicalFluxes/blob/main/notebooks/RedGiantAxions.ipynb)
+<hr>
 
----
+<details  id="rg-brem">
+  <summary><h2>Electron-ion bremsstrahlung</h2></summary>
 
 <img align="right" width="500" src="plots/plots_png/RGAxion_flux_plot.png">
 
-## Electron-ion bremsstrahlung
+<h3>&nbsp;</h3>
+\(g_{ae}=10^{-13}\)
 
-$$g_{ae}=10^{-13}$$
+<p>
+  Plot (
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/RGAxion_flux_plot.pdf" target="_blank" rel="noopener noreferrer">pdf</a>,
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/RGAxion_flux_plot.png" target="_blank" rel="noopener noreferrer">png</a>
+  )
+</p>
 
-Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/RGAxion_flux_plot.pdf), [png](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/RGAxion_flux_plot.png))
+<h3>&nbsp;</h3><h3>&nbsp;</h3><h3>&nbsp;</h3>
+
+</details>
+<hr>
+
+</details>
+<hr>
 
 
 
-### &nbsp;
-### &nbsp;
-### &nbsp;
-### &nbsp;
+<details open id="HB-axions">
+<summary><h1>Horizontal Branch stars axions</h1></summary>
 
----
+<p>
+  The main production channel for axions interacting with photons in horizontal branch (HB) stars is the Primakoff effect.
+  In this case, the production spectrum is fitted as
+</p>
 
-# Horizontal Branch stars axions
-
-The main production channel for axions interacting with photons in horizontal branch (HB) stars is the Primakoff effect. In this case, the production spectrum is fitted as
-
+<p>
 $$
-\frac{dN_a}{dE_a dt}= 10^{36}\,\mathrm{keV}^{-1}\,\mathrm{s}^{-1}\left(\frac{g_{a\gamma}}{10^{-12}\mathrm{GeV}^{-1}}\right)^2\,C_0 \left(\frac{E}{E_0}\right)^\beta e^{-(1+\beta)\frac{E}{E_0}},
+\frac{dN_a}{dE_a dt}= 10^{36}\,\mathrm{keV}^{-1}\,\mathrm{s}^{-1}
+\left(\frac{g_{a\gamma}}{10^{-12}\mathrm{GeV}^{-1}}\right)^2\,
+C_0 \left(\frac{E}{E_0}\right)^\beta e^{-(1+\beta)\frac{E}{E_0}},
 $$
+</p>
 
-with 
+<p>
+  with
+</p>
 
+<p>
 $$
 C_0=94.76\qquad E_0=36.59\,\,\mathrm{keV}\qquad \beta=2.74\,.
 $$
+</p>
 
+<h3>
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/blob/main/notebooks/HorizontalBranchAxions.ipynb" target="_blank" rel="noopener noreferrer">
+    View Notebook (.ipynb)
+  </a>
+</h3>
 
-### [View Notebook (.ipynb)](https://github.com/ggrillidc/AxionAstrophysicalFluxes/blob/main/notebooks/HorizontalBranchAxions.ipynb)
+<hr>
 
----
+<details  id="hb-prim">
+  <summary><h2>Primakoff</h2></summary>
 
 <img align="right" width="500" src="plots/plots_png/HBAxion_flux_plot.png">
 
-## Primakoff
+<h3>&nbsp;</h3>
+\(g_{a\gamma}=10^{-12}\)
 
-$$g_{a\gamma}=10^{-12}$$
+<p>
+  Plot (
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/HBAxion_flux_plot.pdf" target="_blank" rel="noopener noreferrer">pdf</a>,
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/HBAxion_flux_plot.png" target="_blank" rel="noopener noreferrer">png</a>
+  )
+</p>
 
-Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/HBAxion_flux_plot.pdf), [png](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/HBAxion_flux_plot.png))
+<h3>&nbsp;</h3><h3>&nbsp;</h3><h3>&nbsp;</h3>
 
+</details>
+<hr>
 
-
-### &nbsp;
-### &nbsp;
-### &nbsp;
-### &nbsp;
-
-
----
-
-# Asymptotic Red Giants axions
-
-
-
----
-
-# White Dwarfs axions
+</details>
+<hr>
 
 
-White Dwarfs axions are mainly produced via their coupling to electrons, with the electron-ion bremsstrahlung process $$e + Ze \to e + Ze + a$$ as the main production channel involving mainly carbon and oxygen. The White Dwarf axion emission spectrum is given by
+<details open id="ARG-axions">
+<summary><h1>Asymptotic Red Giants axions</h1></summary>
 
+</details>
+<hr>
+
+<details open id="WD-axions">
+<summary><h1>White Dwarfs axions</h1></summary>
+
+<p>
+  White Dwarfs axions are mainly produced via their coupling to electrons, with the electron-ion bremsstrahlung process \(e + Ze \to e + Ze + a\) as the main production channel involving mainly carbon and oxygen. 
+  The White Dwarf axion emission spectrum is given by
+</p>
+
+<p>
 $$
-\frac{dN_a}{dE_a dt}= 10^{16}\,\mathrm{keV}^{-1}\,\mathrm{s}^{-1}\left(\frac{g_{ae}}{10^{-13}}\right)^2\,C_0 \left(\frac{E}{E_0}\right)^\beta e^{-(1+\beta)\frac{E}{E_0}},
+\frac{dN_a}{dE_a dt}= 10^{16}\,\mathrm{keV}^{-1}\,\mathrm{s}^{-1}
+\left(\frac{g_{ae}}{10^{-13}}\right)^2\,
+C_0 \left(\frac{E}{E_0}\right)^\beta e^{-(1+\beta)\frac{E}{E_0}},
 $$
+</p>
 
-with 
+<p>
+  with
+</p>
 
+<p>
 $$
 C_0=1.25\qquad E_0=9.38\,\,\mathrm{keV}\qquad \beta=1.23\,.
 $$
+</p>
 
+<h3>
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/blob/main/notebooks/WhiteDwarfAxions.ipynb" target="_blank" rel="noopener noreferrer">
+    View Notebook (.ipynb)
+  </a>
+</h3>
 
-### [View Notebook (.ipynb)](https://github.com/ggrillidc/AxionAstrophysicalFluxes/blob/main/notebooks/WhiteDwarfAxions.ipynb)
+<hr>
 
----
+<details  id="wd-brem">
+  <summary><h2>Electron-ion bremsstrahlung</h2></summary>
 
 <img align="right" width="500" src="plots/plots_png/WDAxion_flux_plot.png">
 
-## Electron-ion bremsstrahlung
+<h3>&nbsp;</h3>
+\(g_{ae}=10^{-13}\)
 
-$$g_{ae}=10^{-13}$$
+<p>
+  Plot (
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/WDAxion_flux_plot.pdf" target="_blank" rel="noopener noreferrer">pdf</a>,
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/WDAxion_flux_plot.png" target="_blank" rel="noopener noreferrer">png</a>
+  )
+</p>
 
-Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/WDAxion_flux_plot.pdf), [png](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/WDAxion_flux_plot.png))
+<h3>&nbsp;</h3><h3>&nbsp;</h3><h3>&nbsp;</h3>
 
+</details>
+<hr>
 
-
-### &nbsp;
-### &nbsp;
-### &nbsp;
-### &nbsp;
-
-
-
-
----
-
-# Red Supergiants axions
+</details>
+<hr>
 
 
-ALP production in massive stars at supergiant stages is dominated by their couplings to photons and electrons. The dominant ALP production process induced by the ALP-photon interaction is the Primakoff effect, $$\gamma + Ze \rightarrow a + Ze$$, corresponding to the conversion of a thermal photon into an ALP in the electrostatic field of charged particles in the stellar plasma [[Carlson](https://doi.org/10.1016/0370-2693(94)01529-L)]. On the other hand, axions interacting with electrons are mainly produced via Compton scattering, $$\gamma + e \rightarrow e + a$$ [[Raffelt](https://wwwth.mpp.mpg.de/members/raffelt/mypapers/Stars.pdf)], and the electron-ion Bremsstrahlung, $$e + Ze \rightarrow e + Ze + a$$[[Carenza and Lucente](https://journals.aps.org/prd/abstract/10.1103/PhysRevD.103.123024)]. The total amount of ALPs produced by the star is obtained by integrating the production rates over the entire volume of the star. The Red-Giant Brach (RGB) ALP production spectrum integrated over the star volume can be fitted as
+<details open id="RSG-axions">
+<summary><h1>Red Supergiants axions</h1></summary>
 
+<p>
+ALP production in massive stars at supergiant stages is dominated by their couplings to photons and electrons. 
+The dominant ALP production process induced by the ALP-photon interaction is the Primakoff effect,
+\(\gamma + Ze \rightarrow a + Ze\),
+corresponding to the conversion of a thermal photon into an ALP in the electrostatic field of charged particles in the stellar plasma 
+[<a href="https://doi.org/10.1016/0370-2693(94)01529-L" target="_blank">Carlson</a>].
+</p>
+
+<p>
+On the other hand, axions interacting with electrons are mainly produced via Compton scattering,
+\(\gamma + e \rightarrow e + a\) 
+[<a href="https://wwwth.mpp.mpg.de/members/raffelt/mypapers/Stars.pdf" target="_blank">Raffelt</a>],
+and the electron-ion Bremsstrahlung,
+\(e + Ze \rightarrow e + Ze + a\) 
+[<a href="https://journals.aps.org/prd/abstract/10.1103/PhysRevD.103.123024" target="_blank">Carenza and Lucente</a>].
+</p>
+
+<p>
+The total amount of ALPs produced by the star is obtained by integrating the production rates over the entire volume of the star.
+The Red-Giant Branch (RGB) ALP production spectrum integrated over the star volume can be fitted as
+</p>
+
+<p>
 $$
 \frac{d N_a}{dE dt}=\frac{10^{42}}{\mathrm{keV}\,\mathrm{s}}\biggl[{\mathcal C}_B\,g_{13}^2\,\left(\frac{E}{E_{0,B}}\right)^{\beta_B}\,e^{-(\beta_B+1)E/E_{0,B}}\\ 
-+ {\mathcal C}_C\,g_{13}^2\,\left(\frac{E}{E_{0_C}}\right)^{\beta_C}\,e^{-(\beta_C+1)E/E_{0,C}} \\ 
++ {\mathcal C}_C\,g_{13}^2\,\left(\frac{E}{E_{0,C}}\right)^{\beta_C}\,e^{-(\beta_C+1)E/E_{0,C}} \\ 
 + {\mathcal C}_P\,g_{11}^2\,\left(\frac{E}{E_{0,P}}\right)^{\beta_P}\,e^{-(\beta_P+1)E/E_{0,P}}\biggr]\,,
 $$
+</p>
 
-where $$g_{11} \equiv g_{a\gamma}/10^{-11}\,\mathrm{GeV}^{-1}$$, $$g_{13}\equiv g_{ae}/10^{-13}$$, $${\mathcal C}_{B/C/P}$$ are normalization constants, $$E_{0,{B/C/P}}$$ is the average energy and $$\beta_{B/C/P}$$ is the spectral index for Bremsstrahlung, Compton and Primakoff processes, respectively. 
-
-<style>
-table td:nth-child(2), table th:nth-child(2) {
-  white-space: nowrap;
-}
-table, th, td {
-  border: 1px solid #ddd;
-  border-collapse: collapse;
-  padding: 4px;
-}
-th, td {
-  text-align: center;
-}
-</style>
+<p>
+where 
+\(g_{11} \equiv g_{a\gamma}/10^{-11}\,\mathrm{GeV}^{-1}\),
+\(g_{13}\equiv g_{ae}/10^{-13}\),
+\({\mathcal C}_{B/C/P}\) are normalization constants, 
+\(E_{0,{B/C/P}}\) is the average energy 
+and 
+\(\beta_{B/C/P}\) is the spectral index for Bremsstrahlung, Compton and Primakoff processes, respectively. 
+</p>
 
 <table>
 <thead>
@@ -340,214 +672,299 @@ th, td {
 </tr>
 </thead>
 <tbody>
-<tr>
-  <td>1</td><td>He burning</td>
-  <td>$$3.36$$</td><td>$$74.7$$</td><td>$$2.10$$</td>
-  <td>$$2.18\cdot10^{-2}$$</td><td>$$36.1$$</td><td>$$0.732$$</td>
-  <td>$$5.24$$</td><td>$$115$$</td><td>$$3.12$$</td>
-</tr>
-<tr>
-  <td>2</td><td>start C burning</td>
-  <td>$$9.70$$</td><td>$$173$$</td><td>$$2.01$$</td>
-  <td>$$0.530$$</td><td>$$95.3$$</td><td>$$0.857$$</td>
-  <td>$$116$$</td><td>$$267$$</td><td>$$3.18$$</td>
-</tr>
-<tr>
-  <td>3</td><td>C burning</td>
-  <td>$$13.1$$</td><td>$$208$$</td><td>$$2.02$$</td>
-  <td>$$1.06$$</td><td>$$118$$</td><td>$$0.901$$</td>
-  <td>$$211$$</td><td>$$315$$</td><td>$$3.18$$</td>
-</tr>
-<tr>
-  <td>4</td><td>start Ne burning</td>
-  <td>$$26.9$$</td><td>$$339$$</td><td>$$1.97$$</td>
-  <td>$$8.53$$</td><td>$$226$$</td><td>$$1.08$$</td>
-  <td>$$991$$</td><td>$$489$$</td><td>$$3.23$$</td>
-</tr>
-<tr>
-  <td>5</td><td>start O burning</td>
-  <td>$$23.3$$</td><td>$$367$$</td><td>$$1.85$$</td>
-  <td>$$11.3$$</td><td>$$255$$</td><td>$$1.10$$</td>
-  <td>$$991$$</td><td>$$525$$</td><td>$$3.15$$</td>
-</tr>
-<tr>
-  <td>6</td><td>O burning</td>
-  <td>$$31.5$$</td><td>$$495$$</td><td>$$1.77$$</td>
-  <td>$$23.1$$</td><td>$$333$$</td><td>$$1.09$$</td>
-  <td>$$1430$$</td><td>$$680$$</td><td>$$2.90$$</td>
-</tr>
-<tr>
-  <td>7</td><td>start Si burning</td>
-  <td>$$94.5$$</td><td>$$858$$</td><td>$$1.89$$</td>
-  <td>$$73.5$$</td><td>$$593$$</td><td>$$1.11$$</td>
-  <td>$$8430$$</td><td>$$1090$$</td><td>$$3.09$$</td>
-</tr>
-<tr>
-  <td>8</td><td>Si burning</td>
-  <td>$$92.8$$</td><td>$$1000$$</td><td>$$1.79$$</td>
-  <td>$$86.0$$</td><td>$$685$$</td><td>$$1.07$$</td>
-  <td>$$8030$$</td><td>$$1260$$</td><td>$$2.85$$</td>
-</tr>
+<tr><td>1</td><td>He burning</td><td>$$3.36$$</td><td>$$74.7$$</td><td>$$2.10$$</td><td>$$2.18\cdot10^{-2}$$</td><td>$$36.1$$</td><td>$$0.732$$</td><td>$$5.24$$</td><td>$$115$$</td><td>$$3.12$$</td></tr>
+<tr><td>2</td><td>start C burning</td><td>$$9.70$$</td><td>$$173$$</td><td>$$2.01$$</td><td>$$0.530$$</td><td>$$95.3$$</td><td>$$0.857$$</td><td>$$116$$</td><td>$$267$$</td><td>$$3.18$$</td></tr>
+<tr><td>3</td><td>C burning</td><td>$$13.1$$</td><td>$$208$$</td><td>$$2.02$$</td><td>$$1.06$$</td><td>$$118$$</td><td>$$0.901$$</td><td>$$211$$</td><td>$$315$$</td><td>$$3.18$$</td></tr>
+<tr><td>4</td><td>start Ne burning</td><td>$$26.9$$</td><td>$$339$$</td><td>$$1.97$$</td><td>$$8.53$$</td><td>$$226$$</td><td>$$1.08$$</td><td>$$991$$</td><td>$$489$$</td><td>$$3.23$$</td></tr>
+<tr><td>5</td><td>start O burning</td><td>$$23.3$$</td><td>$$367$$</td><td>$$1.85$$</td><td>$$11.3$$</td><td>$$255$$</td><td>$$1.10$$</td><td>$$991$$</td><td>$$525$$</td><td>$$3.15$$</td></tr>
+<tr><td>6</td><td>O burning</td><td>$$31.5$$</td><td>$$495$$</td><td>$$1.77$$</td><td>$$23.1$$</td><td>$$333$$</td><td>$$1.09$$</td><td>$$1430$$</td><td>$$680$$</td><td>$$2.90$$</td></tr>
+<tr><td>7</td><td>start Si burning</td><td>$$94.5$$</td><td>$$858$$</td><td>$$1.89$$</td><td>$$73.5$$</td><td>$$593$$</td><td>$$1.11$$</td><td>$$8430$$</td><td>$$1090$$</td><td>$$3.09$$</td></tr>
+<tr><td>8</td><td>Si burning</td><td>$$92.8$$</td><td>$$1000$$</td><td>$$1.79$$</td><td>$$86.0$$</td><td>$$685$$</td><td>$$1.07$$</td><td>$$8030$$</td><td>$$1260$$</td><td>$$2.85$$</td></tr>
 </tbody>
 </table>
 
+<p style="font-style: italic; font-size: 0.9em; margin-top: 0.5em;">
+<strong>Table:</strong> Summary of the fitting parameters to be used in the equation above.
+</p>
 
-**Table:** Summary of the fitting parameters to be used in the equation above.
+<h3>
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/blob/main/notebooks/RedSuperGiantsAxions.ipynb" target="_blank" rel="noopener noreferrer">
+    View Notebook (.ipynb)
+  </a>
+</h3>
 
+<hr>
 
-### [View Notebook (.ipynb)](https://github.com/ggrillidc/AxionAstrophysicalFluxes/blob/main/notebooks/RedSuperGiantsAxions.ipynb)
-
----
+<details  id="rsg-prim">
+<summary><h2>Primakoff</h2></summary>
 
 <img align="right" width="500" src="plots/plots_png/Primakoff_RSGAxion_flux_plot.png">
 
-## Primakoff
+<h3>&nbsp;</h3>
+\(g_{a\gamma}=10^{-11}\,\text{GeV}^{-1}\)
 
+<p>
+  Plot (
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Primakoff_RSGAxion_flux_plot.pdf" target="_blank" rel="noopener noreferrer">pdf</a>,
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Primakoff_RSGAxion_flux_plot.png" target="_blank" rel="noopener noreferrer">png</a>
+  )
+</p>
 
-$$g_{a\gamma}=10^{-11}\,\text{GeV}^{-1}$$
+<h3>&nbsp;</h3><h3>&nbsp;</h3><h3>&nbsp;</h3>
+</details>
+<hr>
 
-Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Primakoff_RSGAxion_flux_plot.pdf), [png](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Primakoff_RSGAxion_flux_plot.png))
-### &nbsp;
-### &nbsp;
-### &nbsp;
-### &nbsp;
-
-
-
----
+<details  id="rsg-brem">
+<summary><h2>Bremsstrahlung</h2></summary>
 
 <img align="right" width="500" src="plots/plots_png/Bremsstrahlung_RSGAxion_flux_plot.png">
 
-## Bremsstrahlung
+<h3>&nbsp;</h3>
+\(g_{ae}=10^{-13}\)
 
-$$g_{ae}=10^{-13}$$
+<p>
+  Plot (
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Bremsstrahlung_RSGAxion_flux_plot.pdf" target="_blank" rel="noopener noreferrer">pdf</a>,
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Bremsstrahlung_RSGAxion_flux_plot.png" target="_blank" rel="noopener noreferrer">png</a>
+  )
+</p>
 
-Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Bremsstrahlung_RSGAxion_flux_plot.pdf), [png](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Bremsstrahlung_RSGAxion_flux_plot.png))
+<h3>&nbsp;</h3><h3>&nbsp;</h3><h3>&nbsp;</h3>
+</details>
+<hr>
 
-
-
-### &nbsp;
-### &nbsp;
-### &nbsp;
-### &nbsp;
-
-
-
----
+<details  id="rsg-com">
+<summary><h2>Compton</h2></summary>
 
 <img align="right" width="500" src="plots/plots_png/Compton_RSGAxion_flux_plot.png">
 
-## Compton
+<h3>&nbsp;</h3>
+\(g_{ae}=10^{-13}\)
 
-$$g_{ae}=10^{-13}$$
+<p>
+  Plot (
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Compton_RSGAxion_flux_plot.pdf" target="_blank" rel="noopener noreferrer">pdf</a>,
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Compton_RSGAxion_flux_plot.png" target="_blank" rel="noopener noreferrer">png</a>
+  )
+</p>
 
-Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Compton_RSGAxion_flux_plot.pdf), [png](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Compton_RSGAxion_flux_plot.png))
+<h3>&nbsp;</h3><h3>&nbsp;</h3><h3>&nbsp;</h3>
+</details>
+<hr>
+
+</details>
+<hr>
 
 
+<details open id="CCSN-axions"> 
+<summary><h1>Core-collapse Supernovae axions</h1></summary>
 
-### &nbsp;
-### &nbsp;
-### &nbsp;
-### &nbsp;
+<p>
+  Axion emission from the inner regions of the SN core is expected to be strongly enhanced by the extreme temperature and density conditions,
+  reaching values as high as 
+  \(T\sim 40\,\text{MeV}\) 
+  and 
+  \(\rho\sim 3\times 10^{14}\,\text{g}\,\text{cm}^{-3}\).
+</p>
 
+<p>
+  The following spectrum adopts the 1D spherically symmetric GARCHING group's SN model SFHo-s18.8 provided in the 
+  <a href="https://wwwmpa.mpa-garching.mpg.de/ccsnarchive//" target="_blank" rel="noopener noreferrer">Garching core-collapse SN research archive</a> 
+  and based on the neutrino-hydrodynamics code PROMETHEUS-VERTEX 
+  [<a href="https://www.aanda.org/articles/aa/abs/2002/46/aa2451/aa2451.html" target="_blank" rel="noopener noreferrer">Rampp and Janka</a>].
+</p>
 
+<p>
+  The most efficient axion production channels from the SN core are related to their couplings to nuclear matter. 
+  The production in the nuclear medium is due to NN bremsstrahlung
+  \(N+N\to N+N+a\)
+  and the 
+  \(\pi N\)
+  Compton-like process 
+  \(\pi + N \to a + N\).
+</p>
 
----
+<p>
+  The bremsstrahlung axion spectrum can be described by the fitting formula 
+  [<a href="https://iopscience.iop.org/article/10.1088/1475-7516/2024/11/009" target="_blank" rel="noopener noreferrer">Lella et al.</a>]
+</p>
 
-# Core-collapse Supernovae axions
-
-Axion emission from the inner regions of the SN core is expected to be strongly enhanced by the extremme temperature and density conditions, reaching values as high as $$T\sim 40$$ GeV and $$\rho\sim 3\times 10^{14}$$ g cm$$^{-3}$$. The following spectrum adopts the 1D spherical symmetric GARCHING group's SN model SFHo-s18.8 provided in the [Garching core-collapse SN research archive](https://wwwmpa.mpa-garching.mpg.de/ccsnarchive//) and based on the neutrino-hydrodynamics code PROMETHEUS-VERTEX [[Rampp and Janka](https://www.aanda.org/articles/aa/abs/2002/46/aa2451/aa2451.html)].
-The most efficient axion production channels from the SN core are related to their couplings to nuclear matter. The production in the nuclear medium of the SN core is due to NN bremsstrahlung $$N+N\to N+N+a$$ and $$\pi N$$ Compton-like process $$\pi + N \to a + N$$. The bremsstrahlung axion spectrum can be described by the fitting formula [[Lella et al.](https://iopscience.iop.org/article/10.1088/1475-7516/2024/11/009)]
-
+<p>
 $$
- \left(\frac{d^2N_{a}}{dE_a\,dt}\right)_{NN}=A_{NN}\,\left(\frac{g_{ap}}{5\times 10^{-10}}\right)^2\,\left(\frac{E_a}{E_{NN}^0}\right)^{\beta_{NN}} \exp\left[{-(\beta_{NN}+1)\,\frac{E_a}{E^0_{NN}}}\right]\,,
+\left(\frac{d^2N_{a}}{dE_a\,dt}\right)_{NN}
+= A_{NN}\,\left(\frac{g_{ap}}{5\times 10^{-10}}\right)^2\,
+\left(\frac{E_a}{E_{NN}^0}\right)^{\beta_{NN}} 
+\exp\!\left[-(\beta_{NN}+1)\,\frac{E_a}{E^0_{NN}}\right],
 $$
+</p>
 
-with fitting parameters referring to axion emission at different instants after the core-bounce $$t_{\rm pb}$$ provided in the Table below.
+<p>
+with fitting parameters referring to axion emission at different instants after the core-bounce 
+\(t_{\rm pb}\) 
+provided in the Table below.
+</p>
 
+<table>
+<thead>
+<tr>
+  <th>$$t_{\mathrm{pb}}\,[\mathrm{s}]$$</th>
+  <th>$$E^0_{NN}\,[\mathrm{MeV}]$$</th>
+  <th>$$\beta_{NN}$$</th>
+  <th>$$A_{NN}\,[\mathrm{MeV}^{-1}\,\mathrm{s}^{-1}]$$</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>$$70.19$$</td><td>$$1.44$$</td><td>$$4.56 \times 10^{54}$$</td></tr>
+<tr><td>2</td><td>$$70.39$$</td><td>$$1.42$$</td><td>$$4.31 \times 10^{54}$$</td></tr>
+<tr><td>3</td><td>$$56.91$$</td><td>$$1.36$$</td><td>$$2.41 \times 10^{54}$$</td></tr>
+<tr><td>4</td><td>$$58.36$$</td><td>$$1.31$$</td><td>$$1.10 \times 10^{54}$$</td></tr>
+<tr><td>5</td><td>$$47.41$$</td><td>$$1.24$$</td><td>$$3.95 \times 10^{53}$$</td></tr>
+<tr><td>6</td><td>$$35.02$$</td><td>$$1.17$$</td><td>$$1.04 \times 10^{53}$$</td></tr>
+<tr><td>7</td><td>$$23.98$$</td><td>$$1.12$$</td><td>$$2.20 \times 10^{52}$$</td></tr>
+<tr><td>8</td><td>$$16.10$$</td><td>$$1.10$$</td><td>$$4.01 \times 10^{51}$$</td></tr>
+</tbody>
+</table>
 
-| $$t_{\mathrm{pb}}\,[\mathrm{s}]$$ | $$E^0_{NN}\,[\mathrm{MeV}]$$  | $$\beta_{NN}$$ | $$A_{NN}\,[\mathrm{MeV}^{-1}\,\mathrm{s}^{-1}]$$ |
-|------------------------|------------------|-------------|-------------------------------|
-| 1                      | 70.19            | 1.44        | $$4.56 \times 10^{54}$$          |
-| 2                      | 70.39            | 1.42        | $$4.31 \times 10^{54}$$          |
-| 3                      | 56.91            | 1.36        | $$2.41 \times 10^{54}$$          |
-| 4                      | 58.36            | 1.31        | $$1.10 \times 10^{54}$$          |
-| 5                      | 47.41            | 1.24        | $$3.95 \times 10^{53}$$          |
-| 6                      | 35.02            | 1.17        | $$1.04 \times 10^{53}$$          |
-| 7                      | 23.98            | 1.12        | $$2.20 \times 10^{52}$$          |
-| 8                      | 16.10            | 1.10        | $$4.01 \times 10^{51}$$          |
+<p style="font-style: italic; font-size: 0.9em; margin-top: 0.5em;">
+<strong>Table:</strong> Summary of the fitting parameters for the NN bremsstrahlung case.
+</p>
 
-**Table:** Summary of the fitting parameters to be used in the NN bremsstrahlung case.
+<p>
+  The pion conversion emission rate is estimated as 
+  [<a href="https://iopscience.iop.org/article/10.1088/1475-7516/2024/11/009" target="_blank" rel="noopener noreferrer">Lella et al.</a>]
+</p>
 
-The pion conversion emission rate can be estimated as (see [[Lella et al.](https://iopscience.iop.org/article/10.1088/1475-7516/2024/11/009)])
-
+<p>
 $$
-    \left(\frac{d^2N_{a}}{dE_a\,dt}\right)_{\pi N}=A_{\pi N}\,\left(\frac{g_{ap}}{5\times 10^{-10}}\right)^2\,\left(\frac{E_a-\omega_c}{E^0_{\pi N}}\right)^{\beta_{\pi N}} \exp\left[{-(\beta_{\pi N}+1)\,\frac{E_a-\omega_c}{E^0_{\pi N}}}\right]\Theta(E_a-\omega_c)\,,
+\left(\frac{d^2N_{a}}{dE_a\,dt}\right)_{\pi N}
+= A_{\pi N}\,\left(\frac{g_{ap}}{5\times 10^{-10}}\right)^2\,
+\left(\frac{E_a-\omega_c}{E^0_{\pi N}}\right)^{\beta_{\pi N}} 
+\exp\!\left[-(\beta_{\pi N}+1)\,\frac{E_a-\omega_c}{E^0_{\pi N}}\right]
+\Theta(E_a-\omega_c),
 $$
+</p>
 
-where $$\Theta(E)$$ is the Heavisde theta function.The fitting parameters for different times after the SN core bounce are reported in the following table.
+<p>
+where 
+\(\Theta(E)\) 
+is the Heaviside theta function. 
+Fitting parameters for different times after the SN core bounce are:
+</p>
 
+<table>
+<thead>
+<tr>
+  <th>$$t_{\mathrm{pb}}\,[\mathrm{s}]$$</th>
+  <th>$$E^{0}_{\pi N}\,[\mathrm{MeV}]$$</th>
+  <th>$$\beta_{\pi N}$$</th>
+  <th>$$A_{\pi N}\,[\mathrm{MeV}^{-1}\,\mathrm{s}^{-1}]$$</th>
+  <th>$$\omega_c\,[\mathrm{MeV}]$$</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>$$126.43$$</td><td>$$1.20$$</td><td>$$2.77 \times 10^{54}$$</td><td>$$103.27$$</td></tr>
+<tr><td>2</td><td>$$94.47$$</td><td>$$1.03$$</td><td>$$1.24 \times 10^{54}$$</td><td>$$98.87$$</td></tr>
+<tr><td>3</td><td>$$56.14$$</td><td>$$0.54$$</td><td>$$9.78 \times 10^{52}$$</td><td>$$107.00$$</td></tr>
+<tr><td>4</td><td>$$37.20$$</td><td>$$0.65$$</td><td>$$2.20 \times 10^{52}$$</td><td>$$107.06$$</td></tr>
+<tr><td>5</td><td>$$25.02$$</td><td>$$0.47$$</td><td>$$3.63 \times 10^{51}$$</td><td>$$108.59$$</td></tr>
+<tr><td>6</td><td>$$15.62$$</td><td>$$0.40$$</td><td>$$2.53 \times 10^{50}$$</td><td>$$108.04$$</td></tr>
+<tr><td>7</td><td>$$9.18$$</td><td>$$0.37$$</td><td>$$3.10 \times 10^{48}$$</td><td>$$108.33$$</td></tr>
+<tr><td>8</td><td>$$5.64$$</td><td>$$0.37$$</td><td>$$6.64 \times 10^{45}$$</td><td>$$108.37$$</td></tr>
+</tbody>
+</table>
 
-| $$t_{\mathrm{pb}}\,[\mathrm{s}]$$ | $$E^{0}_{\pi N}\,[\mathrm{MeV}]$$ | $$\beta_{\pi N}$$ | $$A_{\pi N}\,[\mathrm{MeV}^{-1}\,\mathrm{s}^{-1}]$$ | $$\omega_c\,[\mathrm{MeV}]$$ |
-|-----------------------------------|-----------------------------------|-------------------|---------------------------------------------|-----------------------------|
-| $$1$$ | $$126.43$$ | $$1.20$$ | $$2.77 \times 10^{54}$$ | $$103.27$$ |
-| $$2$$ | $$94.47$$  | $$1.03$$ | $$1.24 \times 10^{54}$$ | $$98.87$$  |
-| $$3$$ | $$56.14$$  | $$0.54$$ | $$9.78 \times 10^{52}$$ | $$107.00$$ |
-| $$4$$ | $$37.20$$  | $$0.65$$ | $$2.20 \times 10^{52}$$ | $$107.06$$ |
-| $$5$$ | $$25.02$$  | $$0.47$$ | $$3.63 \times 10^{51}$$ | $$108.59$$ |
-| $$6$$ | $$15.62$$  | $$0.40$$ | $$2.53 \times 10^{50}$$ | $$108.04$$ |
-| $$7$$ | $$9.18$$   | $$0.37$$ | $$3.10 \times 10^{48}$$ | $$108.33$$ |
-| $$8$$ | $$5.64$$   | $$0.37$$ | $$6.64 \times 10^{45}$$ | $$108.37$$ |
+<p style="font-style: italic; font-size: 0.9em; margin-top: 0.5em;">
+<strong>Table:</strong> Summary of the fitting parameters for the pion conversion case.
+</p>
 
-**Table:** Summary of the fitting parameters to be used in the pion conversion case.
+<h3>
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/blob/main/notebooks/CoreCollapseSNAxions.ipynb" target="_blank" rel="noopener noreferrer">
+    View Notebook (.ipynb)
+  </a>
+</h3>
 
+<hr>
 
-
-### [View Notebook (.ipynb)](https://github.com/ggrillidc/AxionAstrophysicalFluxes/blob/main/notebooks/CoreCollapseSNAxions.ipynb)
-
----
+<details  id="ccsn-brem">
+<summary><h2>NN Bremsstrahlung</h2></summary>
 
 <img align="right" width="500" src="plots/plots_png/Bremsstrahlung_SNAxion_flux_plot.png">
 
-## NN Bremsstrahlung
+<h3>&nbsp;</h3>
+\(g_{ap}=5\times10^{-10}\)
 
+<p>
+  Plot (
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Bremsstrahlung_SNAxion_flux_plot.pdf" target="_blank" rel="noopener noreferrer">pdf</a>,
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Bremsstrahlung_SNAxion_flux_plot.png" target="_blank" rel="noopener noreferrer">png</a>
+  )
+</p>
 
-$$g_{ap}=5\times10^{-10}$$
+<h3>&nbsp;</h3><h3>&nbsp;</h3><h3>&nbsp;</h3>
 
-Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/Bremsstrahlung_SNAxion_flux_plot.pdf), [png](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/Bremsstrahlung_SNAxion_flux_plot.png))
-### &nbsp;
-### &nbsp;
-### &nbsp;
-### &nbsp;
+</details>
+<hr>
 
-
-
----
+<details  id="ccsn-pi">
+<summary><h2>Pion conversion</h2></summary>
 
 <img align="right" width="500" src="plots/plots_png/PionConversion_SNAxion_flux_plot.png">
 
-## Pion conversion
+<h3>&nbsp;</h3>
+\(g_{ap}=5\times10^{-10}\)
 
-$$g_{ap}=5\times10^{-10}$$
+<p>
+  Plot (
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/PionConversion_SNAxion_flux_plot.pdf" target="_blank" rel="noopener noreferrer">pdf</a>,
+  <a href="https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/PionConversion_SNAxion_flux_plot.png" target="_blank" rel="noopener noreferrer">png</a>
+  )
+</p>
 
-Plot ([pdf](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/PionConversipn_SNAxion_flux_plot.pdf), [png](https://github.com/ggrillidc/AxionAstrophysicalFluxes/raw/main/plots/plots_png/PionConversion_SNAxion_flux_plot.png))
+<h3>&nbsp;</h3><h3>&nbsp;</h3><h3>&nbsp;</h3>
 
+</details>
+<hr>
 
-
-### &nbsp;
-### &nbsp;
-### &nbsp;
-### &nbsp;
-
-
-
-
----
-
-# Neutron stars axions
+</details>
+<hr>
 
 
+<details open id="NS-axions">
+<summary><h1>Neutron stars axions</h1></summary>
+</details>
+<hr>
 
----
 
-# Binary neutron star mergers axions
+<details open id="BNSM-axions">
+<summary><h1>Binary neutron star mergers axions</h1></summary>
+
+</details>
+<hr>
+
+
+
+This webpage hosts data files and python notebooks for axion astrophysical fluxes. 
+
+Please, email me [giovanni.grilli@lngs.infn.it] for questions, comments or complaints.
+
+
+{% raw %}
+<script>
+function openDetailsFromHash() {
+  const hash = window.location.hash;
+  if (hash) {
+    const target = document.querySelector(hash);
+    if (target && target.tagName.toLowerCase() === "details") {
+      target.open = true;
+      target.scrollIntoView();
+    }
+  }
+}
+
+// Run once on initial load
+document.addEventListener("DOMContentLoaded", openDetailsFromHash);
+
+// Run whenever the hash changes (e.g., clicking different links)
+window.addEventListener("hashchange", openDetailsFromHash);
+</script>
+{% endraw %}
