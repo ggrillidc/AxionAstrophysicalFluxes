@@ -59,6 +59,15 @@
 </style>
 
 <style>
+.green-line {
+  height: 2px;
+  background-color: green;
+  width: 100%;
+  margin: 1em 0;
+}
+</style>
+
+<style>
   .toc-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -82,7 +91,7 @@
   }
 </style>
 
-<h1>Table of contents</h1>
+<summary><span style="font-size:2em;font-weight:bold;color:#228B22;">Table of contents</span></summary>
 <div class="toc-grid">
   <ul>
     <li><a href="#solar-axions">Solar Axions</a>
@@ -280,7 +289,7 @@ where the axion parameters are shown in the following Table:
 <hr />
 
 </details>
-<hr />
+<div class="green-line"></div>
 
 <details open="" id="MS-axions">
 <summary><span style="font-size:2em;font-weight:bold;color:#228B22;">Main Sequence stars axions</span></summary>
@@ -416,7 +425,7 @@ where the axion parameters are now a function of the stellar mass and are given 
 <hr />
 
 </details>
-<hr />
+<div class="green-line"></div>
 
 <details open="" id="rg-axions">
 <summary><span style="font-size:2em;font-weight:bold;color:#228B22;">Red Giants axions</span></summary>
@@ -480,7 +489,7 @@ $$
 <hr />
 
 </details>
-<hr />
+<div class="green-line"></div>
 
 <details open="" id="HB-axions">
 <summary><span style="font-size:2em;font-weight:bold;color:#228B22;">Horizontal Branch stars axions</span></summary>
@@ -537,14 +546,13 @@ $$
 <hr />
 
 </details>
-<hr />
-
+<div class="green-line"></div>
 <details open="" id="ARG-axions">
 <summary><span style="font-size:2em;font-weight:bold;color:#228B22;">Asymptotic Red Giants axions</span></summary>
 
 
 </details>
-<hr />
+<div class="green-line"></div>
 
 <details open="" id="WD-axions">
 <summary><span style="font-size:2em;font-weight:bold;color:#228B22;">White Dwarfs axions</span></summary>
@@ -602,7 +610,7 @@ $$
 <hr />
 
 </details>
-<hr />
+<div class="green-line"></div>
 
 <details open="" id="RSG-axions">
 <summary><span style="font-size:2em;font-weight:bold;color:#228B22;">Red Supergiants axions</span></summary>
@@ -750,7 +758,7 @@ and
 <hr />
 
 </details>
-<hr />
+<div class="green-line"></div>
 
 <details open="" id="CCSN-axions"> 
 <summary><span style="font-size:2em;font-weight:bold;color:#228B22;">Core-collapse Supernovae axions</span></summary>
@@ -922,18 +930,18 @@ Fitting parameters for different times after the SN core bounce are:
 <hr />
 
 </details>
-<hr />
+<div class="green-line"></div>
 
 <details open="" id="NS-axions">
 <summary><span style="font-size:2em;font-weight:bold;color:#228B22;">Neutron stars axions</span></summary>
 </details>
-<hr />
+<div class="green-line"></div>
 
 <details open="" id="BNSM-axions">
 <summary><span style="font-size:2em;font-weight:bold;color:#228B22;">Binary neutron star mergers axions</span></summary>
 
 </details>
-<hr />
+<div class="green-line"></div>
 
 <p>This webpage hosts data files and python notebooks for axion astrophysical fluxes.</p>
 
@@ -944,17 +952,27 @@ function openDetailsFromHash() {
   const hash = window.location.hash;
   if (hash) {
     const target = document.querySelector(hash);
-    if (target && target.tagName.toLowerCase() === "details") {
-      target.open = true;
+    if (target) {
+      // If target is itself a <details>, open it
+      if (target.tagName.toLowerCase() === "details") {
+        target.open = true;
+      }
+      // Also open all parent <details> elements
+      let parent = target.parentElement;
+      while (parent) {
+        if (parent.tagName.toLowerCase() === "details") {
+          parent.open = true;
+        }
+        parent = parent.parentElement;
+      }
       target.scrollIntoView();
     }
   }
 }
 
-// Run once on initial load
+// Run on load
 document.addEventListener("DOMContentLoaded", openDetailsFromHash);
-
-// Run whenever the hash changes (e.g., clicking different links)
+// Run on clicking any link that changes the hash
 window.addEventListener("hashchange", openDetailsFromHash);
 </script>
 
