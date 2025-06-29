@@ -28,7 +28,13 @@ use_math: true
     margin-left: 1.2em;
     margin-top: 0.3em;
   }
+
+  .toc-grid ul:first-child {
+    border-right: 2px solid #228B22; /* green vertical line */
+    padding-right: 1.5em;
+  }
 </style>
+
 
 <h1>Table of contents</h1>
 <div class="toc-grid">
