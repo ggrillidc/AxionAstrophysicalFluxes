@@ -34,20 +34,38 @@ processSolAx = {'Primakoff': {'C0': 2.19e8, 'ga_ref': 1e-12, 'E0': 4.17, 'beta':
 # Define the axion flux function
 
 def SolAx_flux(Ea: float, ga: float, process_i: str) -> float:
-    """
-    Return the solar axion flux for the process_i.
+    """ 
+    Compute the differential solar axion flux at Earth for a given energy, coupling, and production process.
 
-    Returns
-    -------
-    flux : function
-        The axion flux function.
+    Args:
+        Ea (float): Axion energy in keV.
+        ga (float): Axion coupling constant (e.g. gaγγ or gae) in appropriate units.
+        process_i (str): Key identifying the production process (e.g. 'Primakoff', 'Bremsstrahlung', 'Compton'), used to retrieve the fit parameters from `processSolAx`.
+
+    Returns:
+        float: Differential axion flux (in keV^-1 s^-1 cm^-2), according to the fitted model.
     """
     C0, ga_ref, E0, beta = processSolAx[process_i]['C0'], processSolAx[process_i]['ga_ref'], processSolAx[process_i]['E0'], processSolAx[process_i]['beta']
 
     return C0 * (ga / ga_ref)**2 * (Ea / E0)**beta * np.exp(-(1 + beta) * Ea / E0)
 
 def plot_SolarAxion_flux(proc: str, Eamin: float, Eamax: float):
-    
+    """
+    Plot the differential solar axion flux for a given production process over a specified energy range.
+
+    Generates a plot of the solar axion flux (scaled by 1e-6) as a function of axion energy,
+    saves it in both PDF and PNG formats, and displays it.
+
+    Args:
+        proc (str): The production process (e.g. 'Primakoff', 'Bremsstrahlung', 'Compton'),
+            used to select fit parameters from `processSolAx`.
+        Eamin (float): Minimum axion energy (keV) for the plot range.
+        Eamax (float): Maximum axion energy (keV) for the plot range.
+
+    Returns:
+        None
+    """
+
     plt.figure(figsize=(10, 6))
     # Energy range
     E_values = np.linspace(Eamin, Eamax, int((Eamax-Eamin)*20))  # Energy values from 0 to 10 keV
@@ -72,6 +90,30 @@ def plot_SolarAxion_flux(proc: str, Eamin: float, Eamax: float):
 # Main sequence axion fluxes
 
 def processMainSeq(proc: str, Mstar: float):
+    """
+    Compute the fit parameters for axion production processes in Main Sequence stars.
+
+    Given the stellar mass, returns a dictionary of parameters (C0, ga_ref, E0, beta) 
+    for the specified axion production process (Primakoff, Bremsstrahlung, or Compton).
+    These parameters can be used to model the axion emission spectrum.
+
+    Args:
+        proc (str): The production process. Must be one of:
+            'Primakoff', 'Bremsstrahlung', or 'Compton'.
+        Mstar (float): Mass of the star in solar masses.
+
+    Returns:
+        dict: A dictionary with the following keys:
+            - 'C0' (float): Normalization constant of the emission rate (keV^{-1} s^{-1}).
+            - 'ga_ref' (float): Reference coupling used in scaling the flux.
+            - 'E0' (float): Characteristic energy scale (keV).
+            - 'beta' (float): Exponential shape parameter of the spectrum.
+
+    Example:
+        >>> params = processMainSeq('Primakoff', 5.0)
+        >>> print(params['C0'], params['E0'])
+    """
+
     C0Prim = np.where(Mstar < 10, -0.140+0.053*Mstar**(-0.347)*np.exp(Mstar**0.379), -0.014+0.011*Mstar**(1.081))
     betaBrem = np.where(Mstar < 10,0.57+0.18*np.exp(-Mstar**1.09),0.48+0.05*Mstar**0.19)
     process = {'Primakoff': {'C0':C0Prim*1e40, 'ga_ref': 1e-12, 'E0': 3.7+1.13*Mstar**0.355, 'beta': 1.223+3.63*np.exp(-Mstar**0.29)}, 
@@ -85,13 +127,29 @@ def processMainSeq(proc: str, Mstar: float):
 # Define the axion flux function
 
 def MSax_flux(Ea: float, ga: float, process_i: str, Mstar: float) -> float:
-    """
-    Return the solar axion flux for the process_i.
+     """
+    Compute the differential axion flux from a Main Sequence star.
 
-    Returns
-    -------
-    flux : function
-        The axion flux function.
+    Given an axion energy, coupling, production process, and stellar mass, 
+    returns the differential axion flux (per unit energy and time) 
+    at Earth from Main Sequence stars. 
+
+    The flux follows the parameterized expression:
+        dN_a / (dE_a dt) = C0 * (ga / ga_ref)^2 * (Ea / E0)^beta * exp[-(1+beta) * Ea / E0]
+
+    Args:
+        Ea (float): Axion energy in keV.
+        ga (float): Axion coupling constant (e.g., g_{aγ} or g_{ae}).
+        process_i (str): The production process. Should be one of:
+            'Primakoff', 'Bremsstrahlung', or 'Compton'.
+        Mstar (float): Stellar mass in solar masses.
+
+    Returns:
+        float: Differential axion flux at Earth in keV^{-1} s^{-1}.
+
+    Example:
+        >>> flux = MSax_flux(5.0, 1e-12, 'Primakoff', 3.0)
+        >>> print(flux)
     """
 
     C0, ga_ref, E0, beta = processMainSeq(process_i, Mstar)['C0'], processMainSeq(process_i, Mstar)['ga_ref'], processMainSeq(process_i, Mstar)['E0'], processMainSeq(process_i, Mstar)['beta']
@@ -99,7 +157,35 @@ def MSax_flux(Ea: float, ga: float, process_i: str, Mstar: float) -> float:
     return C0 * (ga / ga_ref)**2 * (Ea / E0)**beta * np.exp(-(1 + beta) * Ea / E0)
 
 def plot_MainSequenceAxion_flux(proc: str, Eamin: float, Eamax: float):
+    """
+    Plot the axion flux spectrum for a main sequence star with given parameters.
+
+    This function computes and plots the differential axion flux 
+    (dΦ_a/dE_a) as a function of axion energy E_a, for two stellar masses 
+    (5 and 20 solar masses). The plot is saved as both PDF and PNG files 
+    in predefined folders.
+
+    The flux is normalized and scaled according to the maximum flux value 
+    for better visualization.
+
+    Args:
+        proc (str): Identifier for the stellar process or star type, 
+            used to name the output files.
+        Eamin (float): Minimum axion energy (keV) for the plot range.
+        Eamax (float): Maximum axion energy (keV) for the plot range.
+
+    Raises:
+        ValueError: If Eamax is not greater than Eamin.
     
+    Side Effects:
+        Saves the generated plot as PDF and PNG files in `plotfolder` paths.
+        Displays the plot using matplotlib.
+
+    Notes:
+        The function assumes the existence of a global variable `plotfolder`
+        specifying the directory for saving plots, and a function `MSax_flux`
+        that computes the axion flux.
+    """
     plt.figure(figsize=(10, 6))
     # Energy range
     E_values = np.linspace(Eamin, Eamax, int(Eamax-Eamin)*20)  # Energy values from 0 to 10 keV
@@ -130,7 +216,27 @@ def plot_MainSequenceAxion_flux(proc: str, Eamin: float, Eamax: float):
 
 
 def RGax_flux(Ea: float, gae: float) -> float:
+    """
+    Calculate the axion flux from red giant stars as a function of energy and coupling.
 
+    Computes the differential axion flux (dΦ_a/dE_a) for red giant stars using a
+    parametric formula involving the axion energy and axion-electron coupling.
+
+    Args:
+        Ea (float): Axion energy in keV.
+        gae (float): Axion-electron coupling constant.
+
+    Returns:
+        float: Differential axion flux [keV⁻¹ s⁻¹].
+
+    Notes:
+        The flux is calculated using the formula:
+            flux = 1e39 * C0 * (gae / 1e-13)^2 * (Ea / E0)^beta * exp(-(1 + beta) * Ea / E0)
+        with parameters:
+            C0 = 3.92,
+            E0 = 19.63 keV,
+            beta = 1.25.
+    """
     C0 = 3.92
     E0 = 19.63
     beta = 1.25
@@ -139,7 +245,26 @@ def RGax_flux(Ea: float, gae: float) -> float:
 
 
 def plot_RedGiantAxion_flux(Eamin: float, Eamax: float):
-    
+    """
+    Plot the axion flux spectrum for red giant stars over a specified energy range.
+
+    This function computes the differential axion flux (dN_a / dE_a dt) as a function 
+    of axion energy between `Eamin` and `Eamax` using a fixed axion-electron coupling, 
+    and plots the normalized flux. The plot is saved in both PDF and PNG formats.
+
+    Args:
+        Eamin (float): Minimum axion energy (keV) for the plot range.
+        Eamax (float): Maximum axion energy (keV) for the plot range.
+
+    Side Effects:
+        Saves the generated plot as 'RGAxion_flux_plot.pdf' and 'RGAxion_flux_plot.png' 
+        in the directory specified by the global variable `plotfolder`.
+        Displays the plot using matplotlib.
+
+    Notes:
+        Assumes a global variable `plotfolder` is defined to specify the output folder.
+        The flux is computed with a fixed axion-electron coupling of 1e-13.
+    """
     plt.figure(figsize=(10, 6))
     # Energy range
     E_values = np.linspace(Eamin, Eamax, int(Eamax-Eamin)*20)  # Energy values from 0 to 10 keV
@@ -162,6 +287,27 @@ def plot_RedGiantAxion_flux(Eamin: float, Eamax: float):
     pass
 
 def HBax_flux(Ea: float, gagamma: float) -> float:
+    """
+    Calculate the axion flux from horizontal branch stars as a function of energy and coupling.
+
+    Computes the differential axion flux (dΦ_a/dE_a) for horizontal branch stars using a 
+    parametric formula based on the axion energy and axion-photon coupling constant.
+
+    Args:
+        Ea (float): Axion energy in keV.
+        gagamma (float): Axion-photon coupling constant.
+
+    Returns:
+        float: Differential axion flux [keV⁻¹ s⁻¹ cm⁻²].
+
+    Notes:
+        The flux is calculated using the formula:
+            flux = 1e36 * C0 * (gagamma / 1e-12)^2 * (Ea / E0)^beta * exp(-(1 + beta) * Ea / E0)
+        with parameters:
+            C0 = 94.76,
+            E0 = 36.59 keV,
+            beta = 2.74.
+    """
 
     C0 = 94.76
     E0 = 36.59
@@ -171,6 +317,27 @@ def HBax_flux(Ea: float, gagamma: float) -> float:
 
 
 def plot_HorizontalBranchAxion_flux(Eamin: float, Eamax: float):
+    """
+    Plot the axion flux spectrum from horizontal branch stars over a specified energy range.
+
+    This function computes the differential axion flux (dN_a / dE_a dt) as a function 
+    of axion energy between `Eamin` and `Eamax`, using a fixed axion-photon coupling. 
+    It then generates and saves a normalized plot of the flux.
+
+    Args:
+        Eamin (float): Minimum axion energy (keV) for the plot range.
+        Eamax (float): Maximum axion energy (keV) for the plot range.
+
+    Side Effects:
+        Saves the generated plot as 'HBAxion_flux_plot.pdf' and 
+        'HBAxion_flux_plot.png' in directories specified by the global variable `plotfolder`.
+        Displays the plot using matplotlib.
+
+    Notes:
+        - Assumes a global variable `plotfolder` exists to specify output directories.
+        - Uses a fixed axion-photon coupling of 1e-12 for the flux computation.
+        - The flux is normalized by its order of magnitude to improve visualization.
+    """
     
     plt.figure(figsize=(10, 6))
     # Energy range
@@ -198,12 +365,25 @@ def plot_HorizontalBranchAxion_flux(Eamin: float, Eamax: float):
 
 def WDax_flux(Ea: float, gae: float) -> float:
     """
-    Return the solar axion flux for the process_i.
+    Calculate the axion flux from white dwarf stars as a function of energy and coupling.
 
-    Returns
-    -------
-    flux : function
-        The axion flux function.
+    Computes the differential axion flux (dΦ_a/dE_a) for white dwarf stars using a 
+    parametric formula involving the axion energy and axion-electron coupling constant.
+
+    Args:
+        Ea (float): Axion energy in keV.
+        gae (float): Axion-electron coupling constant.
+
+    Returns:
+        float: Differential axion flux [keV⁻¹ s⁻¹ cm⁻²].
+
+    Notes:
+        The flux is calculated using the formula:
+            flux = 1e16 * C0 * (gae / 1e-13)^2 * (Ea / E0)^beta * exp(-(1 + beta) * Ea / E0)
+        with parameters:
+            C0 = 1.25,
+            E0 = 9.38 keV,
+            beta = 1.23.
     """
 
     C0 = 1.25
@@ -213,6 +393,30 @@ def WDax_flux(Ea: float, gae: float) -> float:
     return 1e16 * C0 * (gae / 1e-13)**2 * (Ea / E0)**beta * np.exp(-(1 + beta) * Ea / E0)
 
 def plot_WhiteDwarfAxion_flux(Eamin: float, Eamax: float):
+    """
+    Plot the axion flux spectrum from white dwarf stars over a specified energy range.
+
+    This function computes the differential axion flux (dN_a / dE_a dt) 
+    as a function of axion energy between `Eamin` and `Eamax`, using 
+    a fixed axion-electron coupling. It then generates a normalized 
+    plot of the flux and saves it in both PDF and PNG formats.
+
+    Args:
+        Eamin (float): Minimum axion energy (keV) for the plot range.
+        Eamax (float): Maximum axion energy (keV) for the plot range.
+
+    Side Effects:
+        - Saves the generated plot as 'WDAxion_flux_plot.pdf' and 
+          'WDAxion_flux_plot.png' in directories specified by the global 
+          variable `plotfolder`.
+        - Displays the plot using matplotlib.
+
+    Notes:
+        - Assumes a global variable `plotfolder` exists that specifies 
+          the output directories for plots.
+        - Uses a fixed axion-electron coupling of 1e-13 for the flux calculation.
+        - The flux is scaled by its order of magnitude to improve visualization.
+    """
     
     plt.figure(figsize=(10, 6))
     # Energy range
@@ -240,9 +444,31 @@ def plot_WhiteDwarfAxion_flux(Eamin: float, Eamax: float):
 
 def get_NNbremsstrahlungSNaxion_parameters(t):
     """
-    Returns (E0_NN [MeV], beta_NN, A_NN [MeV^-1 s^-1]) 
-    for a given t_pb [s].
+    Retrieve the parameters for the NN bremsstrahlung supernova axion flux model at a given time step.
+
+    Given an integer `t` (representing a discrete time snapshot), this function returns 
+    a tuple of parameters used to model the supernova axion flux due to nucleon-nucleon 
+    bremsstrahlung. These parameters typically correspond to fits for (E0, beta, normalization).
+
+    Args:
+        t (int): Time index (1 to 8) corresponding to specific snapshots of the 
+            supernova evolution.
+
+    Returns:
+        tuple: A tuple of the form (E0, beta, norm), where
+            - E0 (float): Characteristic energy scale in MeV.
+            - beta (float): Power-law index.
+            - norm (float): Normalization factor.
+
+    Raises:
+        ValueError: If `t` is not an integer between 1 and 8.
+
+    Notes:
+        The returned parameters are precomputed and typically used in the formula:
+            flux ∝ norm * (Ea / E0)^beta * exp(-(1 + beta) * Ea / E0)
+        to describe the differential axion flux from a supernova at different stages.
     """
+
     data = {
         1: (70.19, 1.44, 4.56e54),
         2: (70.39, 1.42, 4.31e54),
@@ -263,26 +489,58 @@ def get_NNbremsstrahlungSNaxion_parameters(t):
 
 def NNbremsstrahlungSNax_flux(Ea: float, g_ap: float, t_pb: int) -> float:
     """
-    Return the axion flux for the NN bremsstrahlung process in a supernova.
-    
-    Parameters
-    ----------
-    Ea : float
-        Axion energy in MeV.
-    t_pb : int
-        Time post-bounce in seconds (1 to 8).
-    
-    Returns
-    -------
-    float
-        The axion flux in MeV^-1 s^-1.
+    Compute the axion flux from nucleon-nucleon bremsstrahlung in a supernova.
+
+    Calculates the differential axion flux (dΦ_a/dE_a) produced by NN bremsstrahlung 
+    processes in a supernova at a given post-bounce time snapshot.
+
+    Args:
+        Ea (float): Axion energy in MeV.
+        g_ap (float): Axion-proton coupling constant.
+        t_pb (int): Post-bounce time index (1 to 8) specifying the supernova evolution stage.
+
+    Returns:
+        float: Differential axion flux [MeV⁻¹ s⁻¹ cm⁻²].
+
+    Raises:
+        ValueError: If `t_pb` is not a valid index (1 to 8), as enforced by 
+        `get_NNbremsstrahlungSNaxion_parameters`.
+
+    Notes:
+        The flux is computed using:
+            flux = A_NN * (g_ap / 5e-10)^2 * (Ea / E0_NN)^beta_NN * exp(- (1 + beta_NN) * (Ea / E0_NN))
+        where the parameters (E0_NN, beta_NN, A_NN) are determined by the time index `t_pb`.
     """
     
     E0_NN, beta_NN, A_NN = get_NNbremsstrahlungSNaxion_parameters(t_pb)
     
     return A_NN * (g_ap / 5e-10)**2 * (Ea / E0_NN)**beta_NN * np.exp(- (beta_NN + 1) * (Ea / E0_NN))
 
-def plot_NNbremsstrahlungSNAxion_flux(Eamin: float, Eamax: float):
+def plot_NNbremsstrahlungSNAxion_flux(Eamin: float, Eamax: float):):
+    """
+    Plot the supernova axion flux from NN bremsstrahlung over a specified energy range.
+
+    This function computes the differential axion flux (dN_a / dE_a dt) from 
+    nucleon-nucleon bremsstrahlung in a supernova for three different 
+    post-bounce times (1 s, 3 s, 5 s). It then generates a normalized 
+    plot and saves it as both PDF and PNG files.
+
+    Args:
+        Eamin (float): Minimum axion energy (MeV) for the plot range.
+        Eamax (float): Maximum axion energy (MeV) for the plot range.
+
+    Side Effects:
+        - Saves the generated plot as 'Bremsstrahlung_SNAxion_flux_plot.pdf' and 
+          'Bremsstrahlung_SNAxion_flux_plot.png' in directories specified by the 
+          global variable `plotfolder`.
+        - Displays the plot using matplotlib.
+
+    Notes:
+        - Assumes a global variable `plotfolder` exists to specify the output directories.
+        - Uses a fixed axion-proton coupling of 5e-10 for the flux calculation.
+        - Fluxes are computed at three different post-bounce times (1 s, 3 s, 5 s).
+        - The fluxes are scaled by their order of magnitude to improve visualization.
+    """
     
     plt.figure(figsize=(10, 6))
     # Energy range
@@ -317,8 +575,31 @@ def plot_NNbremsstrahlungSNAxion_flux(Eamin: float, Eamax: float):
 
 def get_piNSNaxion_parameters(t):
     """
-    Returns (E0_piN [MeV], beta_piN, A_piN [MeV^-1 s^-1], omega_c [MeV])
-    for a given t_pb [s].
+    Retrieve the parameters for the πN bremsstrahlung supernova axion flux model at a given time step.
+
+    Given an integer `t` (representing a discrete post-bounce time snapshot), 
+    this function returns a tuple of parameters used to model the axion flux 
+    from πN (pion-nucleon) bremsstrahlung processes in a supernova.
+
+    Args:
+        t (int): Time index (1 to 8) corresponding to specific snapshots 
+            of the supernova evolution.
+
+    Returns:
+        tuple: A tuple of the form (E0, beta, norm, omega_c), where
+            - E0 (float): Characteristic energy scale in MeV.
+            - beta (float): Power-law index.
+            - norm (float): Normalization factor.
+            - omega_c (float): Cutoff energy in MeV.
+
+    Raises:
+        ValueError: If `t` is not an integer between 1 and 8.
+
+    Notes:
+        The returned parameters are typically used in a formula like:
+            flux ∝ norm * ( (Ea - omega_c) / E0 )^beta * exp(-(1 + beta) * (Ea - omega_c) / E0)
+        to describe the differential axion flux from supernova πN bremsstrahlung 
+        at different evolutionary stages.
     """
     data = {
         1: (126.43, 1.20, 2.77e54, 103.27),
@@ -338,7 +619,32 @@ def get_piNSNaxion_parameters(t):
 
 def PionConversionSNAxion_flux(E_a, g_ap, tpb=1):
     """
-    Computes (d^2N_a) / (dE_a dt) for piN.
+    Compute the axion flux from pion-nucleon (πN) conversion in a supernova.
+
+    Calculates the differential axion flux (dΦ_a/dE_a) produced by πN bremsstrahlung 
+    processes in a supernova at a given post-bounce time snapshot. 
+    The flux is suppressed for energies below the cutoff omega_c.
+
+    Args:
+        E_a (float or np.ndarray): Axion energy in MeV.
+        g_ap (float): Axion-proton coupling constant.
+        tpb (int, optional): Post-bounce time index (1 to 8) specifying the 
+            supernova evolutionary stage. Defaults to 1.
+
+    Returns:
+        float or np.ndarray: Differential axion flux [MeV⁻¹ s⁻¹ cm⁻²] at energy `E_a`.
+
+    Raises:
+        ValueError: If `tpb` is not a valid index (1 to 8), as enforced by 
+            `get_piNSNaxion_parameters`.
+
+    Notes:
+        The flux is computed using the formula:
+            flux = A_piN * (g_ap / 5e-10)^2 * ((E_a - omega_c)/E0_piN)^beta_piN 
+                   * exp(-(1 + beta_piN)*(E_a - omega_c)/E0_piN)
+        where (E0_piN, beta_piN, A_piN, omega_c) are determined by `tpb`.
+
+        Energies below the cutoff `omega_c` yield a suppressed (zeroed) contribution.
     """
     E0_piN, beta_piN, A_piN, omega_c = get_piNSNaxion_parameters(tpb)  # Using t_pb = 1 as default
     delta_E = E_a - omega_c
@@ -354,7 +660,34 @@ def PionConversionSNAxion_flux(E_a, g_ap, tpb=1):
 
 
 
-def plot_pionConversionSNAxion_flux(Eamin: float, Eamax: float):
+def plot_pionConversionSNAxion_flux(Eamin: float, Eamax: float):):
+    """
+    Plot the supernova axion flux from pion-nucleon (πN) conversion over a specified energy range.
+
+    This function computes the differential axion flux (dN_a / dE_a dt) from 
+    πN bremsstrahlung processes in a supernova for three different 
+    post-bounce times (1 s, 3 s, 5 s). It then generates a normalized 
+    plot of these fluxes and saves it in both PDF and PNG formats.
+
+    Args:
+        Eamin (float): Minimum axion energy (MeV) for the plot range.
+        Eamax (float): Maximum axion energy (MeV) for the plot range.
+
+    Side Effects:
+        - Saves the generated plot as 'PionConversion_SNAxion_flux_plot.pdf' and 
+          'PionConversion_SNAxion_flux_plot.png' in directories specified by 
+          the global variable `plotfolder`.
+        - Displays the plot using matplotlib.
+
+    Notes:
+        - Assumes a global variable `plotfolder` exists that specifies 
+          the output directories for saving plots.
+        - Uses a fixed axion-proton coupling of 5e-10 for all flux computations.
+        - The flux is evaluated at three post-bounce times (1 s, 3 s, 5 s) to 
+          illustrate the time evolution.
+        - The flux curves are scaled by their order of magnitude to improve 
+          visualization on the plot.
+    """
     
     plt.figure(figsize=(10, 6))
     # Energy range
@@ -389,14 +722,34 @@ def plot_pionConversionSNAxion_flux(Eamin: float, Eamax: float):
 
 def get_RedSupergiants_parameters(model: int, process: str) -> tuple:
     """
-    Returns (C, E, beta) for the given model number and process name.
+    Retrieve the parameters for axion flux models from red supergiant stars.
+
+    Given a stellar model index and a production process name, this function 
+    returns a tuple of parameters used to compute the axion flux from 
+    red supergiants. The parameters typically correspond to fits of 
+    the form (normalization, E0, beta) for different processes.
 
     Args:
-        model (int): Model number from 1 to 8.
-        process (str): One of 'Primakoff', 'Bremsstrahlung', or 'Compton'.
+        model (int): Integer index from 1 to 8 specifying the red supergiant 
+            stellar model (increasing mass and luminosity).
+        process (str): Name of the axion production process. Must be one of:
+            'Primakoff', 'Bremsstrahlung', or 'Compton' (case-insensitive).
 
     Returns:
-        tuple: (C, E, beta) values.
+        tuple: A tuple of the form (A, E0, beta), where
+            - A (float): Normalization constant.
+            - E0 (float): Characteristic energy scale in keV.
+            - beta (float): Power-law index.
+
+    Raises:
+        ValueError: If `model` is not an integer from 1 to 8, or if 
+            `process` is not one of the allowed strings.
+
+    Notes:
+        These parameters are typically used in spectral formulas such as:
+            flux ∝ A * (Ea / E0)^beta * exp(- (1 + beta) * Ea / E0)
+        to model the differential axion flux from different production 
+        channels in red supergiants.
     """
     data = {
         1: {
@@ -452,19 +805,27 @@ def get_RedSupergiants_parameters(model: int, process: str) -> tuple:
 
 def RedSupergiantsAxion_flux(E: float, gref:float, model: int, process: str):
     """
-    Computes the differential emission rate dṄa/dE for a single process
-    (Primakoff, Bremsstrahlung, or Compton) for the given model, energy E (in keV),
-    and reference coupling (gagamma/(1e-11 GeV^{-1})) or (gae/1e-13).
+    Calculate the axion flux from red supergiant stars for a given model and process.
+
+    Computes the differential axion flux (dΦ_a/dE) as a function of axion energy, 
+    stellar model, and production process, scaled by the square of the axion coupling.
 
     Args:
-        model (int): Model number (1 to 8).
-        process (str): Process name ('Primakoff', 'Bremsstrahlung', or 'Compton').
-        E (float): Energy in keV.
-        g_13 (float): Dimensionless coupling for Bremsstrahlung and Compton (scaled to 10^-13).
-        g_11 (float): Dimensionless coupling for Primakoff (scaled to 10^-11).
+        E (float): Axion energy in keV.
+        gref (float): Reference axion coupling constant.
+        model (int): Red supergiant stellar model index (1 to 8).
+        process (str): Axion production process; one of 'Primakoff', 'Bremsstrahlung', or 'Compton'.
 
     Returns:
-        float: The differential emission rate in (keV s)^-1.
+        float: Differential axion flux [keV⁻¹ s⁻¹ cm⁻²].
+
+    Raises:
+        ValueError: If `model` or `process` are invalid, as enforced by `get_RedSupergiants_parameters`.
+
+    Notes:
+        The flux is computed using the formula:
+            flux = 1e42 * C * gref^2 * (E / E0)^beta * exp(-(beta + 1) * E / E0)
+        where (C, E0, beta) are parameters from the selected stellar model and process.
     """
     
     # Extract parameters
@@ -480,6 +841,32 @@ def RedSupergiantsAxion_flux(E: float, gref:float, model: int, process: str):
 
 
 def plot_RedSupergiantsAxion_flux(proc: str, Eamin: float, Eamax: float):
+    """
+    Plot the axion flux spectra from red supergiant stars across multiple stellar models.
+
+    This function computes the differential axion flux (dΦ_a/dE_a) for eight red supergiant 
+    stellar models at a fixed axion coupling, for a given production process. 
+    It then generates a normalized plot showing the flux evolution across different 
+    stellar burning stages and saves the plot in both PDF and PNG formats.
+
+    Args:
+        proc (str): Axion production process to plot, e.g. 'Primakoff', 'Bremsstrahlung', or 'Compton'.
+        Eamin (float): Minimum axion energy (keV) for the plot range.
+        Eamax (float): Maximum axion energy (keV) for the plot range.
+
+    Side Effects:
+        - Saves the generated plot as '{proc}_RSGAxion_flux_plot.pdf' and 
+          '{proc}_RSGAxion_flux_plot.png' inside directories specified by the 
+          global variable `plotfolder`.
+        - Displays the plot using matplotlib.
+
+    Notes:
+        - Assumes a global variable `plotfolder` exists for output file paths.
+        - Uses a fixed axion coupling constant gref = 1 for all flux calculations.
+        - The plot includes flux curves for stellar models representing different 
+          burning stages, labeled in the legend.
+        - Fluxes are scaled by their order of magnitude to enhance visualization.
+    """
     
     plt.figure(figsize=(10, 6))
     # Energy range
