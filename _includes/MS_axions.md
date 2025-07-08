@@ -32,9 +32,9 @@ where the axion parameters are now a function of the stellar mass and are given 
       <td>Primakoff $$x=\gamma$$</td>
       <td>$$10^{-12}\,\text{GeV}^{-1}$$</td>
       <td>$$\begin{cases} 
-        -0.140+0.053\,M^{-0.347}e^{M^{0.379}} & \text{for } M<10\,M_{\odot} \\
-        -0.014+0.011\,M^{1.081} & \text{for } M\geq 10 \, M_{\odot}
-      \end{cases}$$</td>
+        -0.140+0.053\,M^{-0.347}e^{M^{0.379}} & \text{for } M<10 \\
+        -0.014+0.011\,M^{1.081} & \text{for } M\geq 10
+      \end{cases}$$ </td>
       <td>$$3.70+1.13\,M^{0.355}$$</td>
       <td>$$1.23+3.63\,e^{-M^{0.29}}$$</td>
     </tr>
@@ -44,8 +44,8 @@ where the axion parameters are now a function of the stellar mass and are given 
       <td>$$55.21+1.62\times10^{4}M^{-0.65}$$</td>
       <td>$$0.06+1.80\,M^{0.23}$$</td>
       <td>$$\begin{cases}
-        0.57 + 0.18 e^{-M^{1.09}} & \text{for } M\le 10 \, M_{\odot} \\
-        0.48+0.05 \,M^{0.19} & \text{for } M\geq 10 \, M_{\odot}
+        0.57 + 0.18 e^{-M^{1.09}} & \text{for } M\le 10  \\
+        0.48+0.05 \,M^{0.19} & \text{for } M\geq 10 
       \end{cases}$$</td>
     </tr>
     <tr>

@@ -74,7 +74,7 @@ use_math: true
   </ul>
 
   <ul>
-    <li><a href="#ARG-axions">Asymptotic Red Giants Axions</a></li>
+    <!-- <li><a href="#ARG-axions">Asymptotic Red Giants Axions</a></li> -->
     <li><a href="#WD-axions">White Dwarfs Axions</a>
       <ul>
         <li><a href="#wd-brem">Electron-ion Bremsstrahlung</a></li>
@@ -93,8 +93,8 @@ use_math: true
         <li><a href="#ccsn-pi">Pion conversion</a></li>
       </ul>
     </li>
-    <li><a href="#NS-axions">Neutron Star Axions</a></li>
-    <li><a href="#BNSM-axions">Binary neutron star merger Axions</a></li>
+    <!-- <li><a href="#NS-axions">Neutron Star Axions</a></li>
+    <li><a href="#BNSM-axions">Binary neutron star merger Axions</a></li> -->
   </ul>
 </div>
 
@@ -102,12 +102,12 @@ use_math: true
 {% include MS_axions.md %}
 {% include RG_axions.md %}
 {% include HB_axions.md %}
-{% include ARG_axions.md %}
+<!-- {% include ARG_axions.md %} -->
 {% include WD_axions.md %}
 {% include RSG_axions.md %}
 {% include CCSN_axions.md %}
-{% include NS_axions.md %}
-{% include BNSM_axions.md %}
+<!-- {% include NS_axions.md %}
+{% include BNSM_axions.md %} -->
 
 This webpage hosts data files and python notebooks for axion astrophysical fluxes. 
 
