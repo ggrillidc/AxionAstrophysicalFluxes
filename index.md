@@ -111,6 +111,7 @@ use_math: true
 {% include CCSN_axions.md %}
 <!-- {% include NS_axions.md %} -->
 {% include BNSM_axions.md %}
+{% include ackno.md %}
 
 This webpage hosts data files and python notebooks for axion astrophysical fluxes. 
 
