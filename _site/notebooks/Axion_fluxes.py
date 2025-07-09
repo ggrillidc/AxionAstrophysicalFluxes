@@ -127,7 +127,7 @@ def processMainSeq(proc: str, Mstar: float):
 # Define the axion flux function
 
 def MSax_flux(Ea: float, ga: float, process_i: str, Mstar: float) -> float:
-     """
+    """
     Compute the differential axion flux from a Main Sequence star.
 
     Given an axion energy, coupling, production process, and stellar mass, 
@@ -139,7 +139,7 @@ def MSax_flux(Ea: float, ga: float, process_i: str, Mstar: float) -> float:
 
     Args:
         Ea (float): Axion energy in keV.
-        ga (float): Axion coupling constant (e.g., g_{aγ} or g_{ae}).
+        ga (float): Axion coupling constant (e.g., g_{agamma} or g_{ae}).
         process_i (str): The production process. Should be one of:
             'Primakoff', 'Bremsstrahlung', or 'Compton'.
         Mstar (float): Stellar mass in solar masses.
@@ -516,7 +516,7 @@ def NNbremsstrahlungSNax_flux(Ea: float, g_ap: float, t_pb: int) -> float:
     
     return A_NN * (g_ap / 5e-10)**2 * (Ea / E0_NN)**beta_NN * np.exp(- (beta_NN + 1) * (Ea / E0_NN))
 
-def plot_NNbremsstrahlungSNAxion_flux(Eamin: float, Eamax: float):):
+def plot_NNbremsstrahlungSNAxion_flux(Eamin: float, Eamax: float):
     """
     Plot the supernova axion flux from NN bremsstrahlung over a specified energy range.
 
@@ -660,7 +660,7 @@ def PionConversionSNAxion_flux(E_a, g_ap, tpb=1):
 
 
 
-def plot_pionConversionSNAxion_flux(Eamin: float, Eamax: float):):
+def plot_pionConversionSNAxion_flux(Eamin: float, Eamax: float):
     """
     Plot the supernova axion flux from pion-nucleon (πN) conversion over a specified energy range.
 
@@ -908,4 +908,133 @@ def plot_RedSupergiantsAxion_flux(proc: str, Eamin: float, Eamax: float):
     plt.show()
     pass
 
+
+def get_NNbremsstrahlungBNSaxion_parameters(t):
+    """
+    Retrieve the parameters for the NN bremsstrahlung axion flux model from a BNS merger at a given time snapshot.
+
+    Given an integer `t` (representing the time after merger in milliseconds), this function returns 
+    a tuple of parameters used to model the axion flux due to nucleon-nucleon bremsstrahlung 
+    from a binary neutron star (BNS) merger.
+
+    Args:
+        t (int): Time after merger in ms (must be one of 5, 10, 15, or 20).
+
+    Returns:
+        tuple: A tuple of the form (E0, beta, C), where
+            - E0 (float): Characteristic energy scale in MeV.
+            - beta (float): Power-law index.
+            - C (float): Normalization factor in MeV^-1 s^-1.
+
+    Raises:
+        ValueError: If `t` is not one of the supported times.
+
+    Notes:
+        These parameters are precomputed fits for the differential axion flux formula:
+            flux ∝ C * (Ea / E0)^beta * exp(-(1 + beta) * Ea / E0)
+        derived from a BNS merger simulation (1.375-1.375 M_sun, DD2 EOS) 
+        for ALP-proton coupling g_ap = 5 × 10^{-10}.
+    """
+
+    data = {
+        5:  (34.27, 1.31, 3.80e53),
+        10: (37.98, 1.36, 4.83e53),
+        15: (37.84, 1.36, 4.40e53),
+        20: (36.93, 1.35, 3.92e53),
+    }
+
+    if t not in data:
+        raise ValueError(f"Unsupported t = {t}. Available t values are {list(data.keys())}")
+
+    return data[t]
+
+
+
+def NNbremsstrahlungBNSMax_flux(Ea: float, g_ap: float, t_pm: int) -> float:
+    """
+    Compute the axion flux from nucleon-nucleon bremsstrahlung in a binary neutron star merger event.
+
+    Calculates the differential axion flux (dΦ_a/dE_a) produced by NN bremsstrahlung 
+    processes in a neutron star merger event at a given time snapshot.
+
+    Args:
+        Ea (float): Axion energy in MeV.
+        g_ap (float): Axion-proton coupling constant.
+        t_pm (int): Post-merger time index (5,  10,  15 or 20) in ms.
+
+    Returns:
+        float: Differential axion flux [MeV⁻¹ s⁻¹ cm⁻²].
+
+    Raises:
+        ValueError: If `t_pm` is not a valid index (5,  10,  15 or 20), as enforced by 
+        `get_NNbremsstrahlungBNSaxion_parameters`.
+
+    Notes:
+        The flux is computed using:
+            flux = A_NN * (g_ap / 5e-10)^2 * (Ea / E0_NN)^beta_NN * exp(- (1 + beta_NN) * (Ea / E0_NN))
+        where the parameters (E0_NN, beta_NN, A_NN) are determined by the time index `t_pb`.
+    """
+    
+    E0, beta, C = get_NNbremsstrahlungBNSaxion_parameters(t_pm)
+    
+    return C * (g_ap / 5e-10)**2 * (Ea / E0)**beta * np.exp(- (beta + 1) * (Ea / E0))
+
+
+
+def plot_NNbremsstrahlungBNSMax_flux(Eamin: float, Eamax: float):
+    """
+    Plot the supernova axion flux from NN bremsstrahlung over a specified energy range.
+
+    This function computes the differential axion flux (dN_a / dE_a dt) from 
+    nucleon-nucleon bremsstrahlung in a supernova for three different 
+    post-bounce times (1 s, 3 s, 5 s). It then generates a normalized 
+    plot and saves it as both PDF and PNG files.
+
+    Args:
+        Eamin (float): Minimum axion energy (MeV) for the plot range.
+        Eamax (float): Maximum axion energy (MeV) for the plot range.
+
+    Side Effects:
+        - Saves the generated plot as 'NNBrehm_BNSM_flux_plot.pdf' and 
+          'NNBrehm_BNSM_flux_plot.png' in directories specified by the 
+          global variable `plotfolder`.
+        - Displays the plot using matplotlib.
+
+    Notes:
+        - Assumes a global variable `plotfolder` exists to specify the output directories.
+        - Uses a fixed axion-proton coupling of 5e-10 for the flux calculation.
+        - Fluxes are computed at three different post-bounce times (1 s, 3 s, 5 s).
+        - The fluxes are scaled by their order of magnitude to improve visualization.
+    """
+    
+    plt.figure(figsize=(10, 6))
+    # Energy range
+    E_values = np.linspace(Eamin, Eamax, int(Eamax-Eamin)*20)  # Energy values from 0 to 10 keV
+    # Compute axion flux
+    flux1 = NNbremsstrahlungBNSMax_flux(E_values, 5e-10, 5)
+    flux2 = NNbremsstrahlungBNSMax_flux(E_values, 5e-10, 10)
+    flux3 = NNbremsstrahlungBNSMax_flux(E_values, 5e-10, 15)
+    flux4 = NNbremsstrahlungBNSMax_flux(E_values, 5e-10, 20)
+    # Customize the range of the plot
+    maxflux = max(np.max(flux1),np.max(flux2),np.max(flux3),np.max(flux4))
+    plt.xlim(Eamin, Eamax)  # Custom x-axis limits
+    plt.ylim(0, maxflux*1.1*10**(-int(np.log10(maxflux))))  # Custom y-axis limits   
+    # Plot the axion flux
+    fl1 = plt.plot(E_values, flux1*10**(-int(np.log10(maxflux))), color='black', ls='-')
+    fl2 = plt.plot(E_values, flux2*10**(-int(np.log10(maxflux))), color='black', ls='--')
+    fl3 = plt.plot(E_values, flux3*10**(-int(np.log10(maxflux))), color='black', ls='-.')
+    fl4 = plt.plot(E_values, flux4*10**(-int(np.log10(maxflux))), color='black', ls=':')
+    # Add labels and legend
+    plt.xlabel(r'$E_a\,[{\rm MeV}]$', fontsize=30)
+    plt.ylabel(r'$\frac{d N_{a}}{d E_a\,d t}\,[10^{' + str(int(np.log10(maxflux))) + r'}\,{\rm MeV}^{-1}{\rm s}^{-1}]$', fontsize=30)
+    plt.grid(True) 
+    h = [fl1[0], fl2[0], fl3[0], fl4[0]]
+    # r'$e^-$ at rest']
+    l = [r'$t_\mathrm{pm}=5$ ms', r'$t_\mathrm{pm}=10$ ms', r'$t_\mathrm{pm}=15$ ms', r'$t_\mathrm{pm}=20$ ms']
+    leg = plt.legend(h, l, loc='upper right', fontsize=20, facecolor='white', framealpha=1)
+    # Save the plot as PDF
+    plt.savefig(plotfolder + 'NNBrehm_BNSM_flux_plot.pdf', bbox_inches='tight')
+    plt.savefig(plotfolder + 'plots_png/NNBrehm_BNSM_flux_plot.png', bbox_inches='tight')
+    plt.show()
+    pass
 

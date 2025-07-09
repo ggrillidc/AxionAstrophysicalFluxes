@@ -93,8 +93,11 @@ use_math: true
         <li><a href="#ccsn-pi">Pion conversion</a></li>
       </ul>
     </li>
-    <!-- <li><a href="#NS-axions">Neutron Star Axions</a></li>
-    <li><a href="#BNSM-axions">Binary neutron star merger Axions</a></li> -->
+    <!-- <li><a href="#NS-axions">Neutron Star Axions</a></li>-->
+    <li><a href="#BNSM-axions">Binary neutron star merger Axions</a>
+      <ul>
+        <li><a href="#bnsm-brem">NN Bremsstrahlung</a></li>
+      </ul></li> 
   </ul>
 </div>
 
@@ -106,8 +109,8 @@ use_math: true
 {% include WD_axions.md %}
 {% include RSG_axions.md %}
 {% include CCSN_axions.md %}
-<!-- {% include NS_axions.md %}
-{% include BNSM_axions.md %} -->
+<!-- {% include NS_axions.md %} -->
+{% include BNSM_axions.md %}
 
 This webpage hosts data files and python notebooks for axion astrophysical fluxes. 
 
